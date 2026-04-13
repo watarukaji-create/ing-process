@@ -9,13 +9,10 @@
 <meta property="og:description" content="アートの力で空間を変え、企業の魅力を高め、人が集まる場所をつくる。_ingの成果とプロセスを公開します。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://watarukaji-create.github.io/ing-process/">
-<!-- OGP画像は後日設定 -->
-<!-- <meta property="og:image" content="https://watarukaji-create.github.io/ing-process/assets/images/ogp.jpg"> -->
 <style>
 /* ============================================
    _ing PROCESS — External Showcase Site
-   Design: Warm minimal, editorial tone
-   Status: SKELETON — 2026-04-13
+   MOCK VERSION with dummy content
    ============================================ */
 
 :root {
@@ -32,16 +29,13 @@
   --border:   #ddd;
   --green:    #2d6a4f;
   --navy:     #1a1a2e;
-  --pink:     #b5838d;
   --font-body: "Yu Gothic", "Meiryo", "Hiragino Sans", sans-serif;
   --font-en:   "Helvetica Neue", Arial, sans-serif;
   --max-w:    880px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -51,9 +45,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* --- MOCK BANNER --- */
+.mock-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: #e74c3c;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 /* --- Navigation --- */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: fixed; top: 32px; left: 0; right: 0; z-index: 100;
   background: rgba(26,26,46,0.95);
   backdrop-filter: blur(8px);
   padding: 12px 24px;
@@ -68,45 +74,60 @@ body {
 /* --- Hero --- */
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
   text-align: center;
   color: var(--white);
-  /* 背景画像は後日設定 */
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark2) 50%, #0f3460 100%);
-  padding: 120px 24px 80px;
+  overflow: hidden;
 }
-.hero-content { max-width: 700px; }
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark2) 40%, #0f3460 100%);
+}
+.hero-bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(196,168,122,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(15,52,96,0.4) 0%, transparent 60%);
+}
+/* 仮の装飾円 — 完成版では写真に差し替え */
+.hero-deco {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.08;
+  background: var(--accent);
+}
+.hero-deco-1 { width: 500px; height: 500px; top: -100px; right: -100px; }
+.hero-deco-2 { width: 300px; height: 300px; bottom: -50px; left: -80px; }
+.hero-content { position: relative; z-index: 2; max-width: 720px; padding: 140px 24px 80px; }
 .hero-label {
   font-family: var(--font-en);
   font-size: 11px;
   letter-spacing: 6px;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 .hero h1 {
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(28px, 5vw, 46px);
   font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
-.hero h1 em {
-  font-style: normal;
-  color: var(--accent);
-}
+.hero h1 em { font-style: normal; color: var(--accent); }
 .hero-sub {
   font-size: 15px;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.9;
+  color: rgba(255,255,255,0.7);
+  line-height: 2;
   max-width: 560px;
-  margin: 0 auto 32px;
+  margin: 0 auto 36px;
 }
 .hero-cta {
   display: inline-block;
   background: var(--accent);
   color: var(--bg-dark);
-  padding: 14px 36px;
+  padding: 16px 40px;
   border-radius: 4px;
   text-decoration: none;
   font-size: 13px;
@@ -146,10 +167,10 @@ body {
   margin-bottom: 40px;
 }
 
-/* --- KPI Cards --- */
+/* --- KPI --- */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
   margin: 40px 0;
 }
@@ -190,6 +211,31 @@ body {
 .ba-card.after { border: 2px solid var(--accent); background: var(--bg-warm); }
 .ba-arrow { font-size: 28px; color: var(--accent); text-align: center; }
 
+/* --- Photo placeholder --- */
+.photo-placeholder {
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4cfc5 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.photo-placeholder::after {
+  content: attr(data-label);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text3);
+  font-size: 12px;
+  letter-spacing: 1px;
+  background: rgba(255,255,255,0.3);
+}
+.photo-grid {
+  display: grid;
+  gap: 12px;
+  margin: 32px 0;
+}
+.photo-grid-2 { grid-template-columns: 1fr 1fr; }
+.photo-grid-3 { grid-template-columns: 2fr 1fr; }
+.photo-grid-3 .photo-sub { display: flex; flex-direction: column; gap: 12px; }
+
 /* --- Timeline --- */
 .timeline { position: relative; padding-left: 32px; margin: 40px 0; }
 .timeline::before {
@@ -197,54 +243,100 @@ body {
   position: absolute; left: 8px; top: 0; bottom: 0;
   width: 2px; background: var(--accent-light);
 }
-.tl-item { position: relative; margin-bottom: 32px; }
+.tl-item { position: relative; margin-bottom: 36px; }
 .tl-item::before {
   content: "";
   position: absolute; left: -28px; top: 6px;
   width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid var(--bg);
+  border: 3px solid var(--bg-warm);
 }
 .tl-period { font-family: var(--font-en); font-size: 12px; color: var(--text3); letter-spacing: 1px; }
-.tl-title { font-size: 16px; font-weight: 700; margin: 4px 0; }
+.tl-title { font-size: 17px; font-weight: 700; margin: 4px 0 6px; }
 .tl-desc { font-size: 14px; color: var(--text2); line-height: 1.8; }
 
-/* --- Interview Cards --- */
-.interview-grid {
+/* --- Roundtable / Voices --- */
+.rt-intro {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
-  margin: 40px 0;
+  margin-bottom: 48px;
 }
-.interview-card {
-  background: var(--white);
+.rt-photo-area {
+  background: linear-gradient(135deg, #e8e4dc 0%, #d4cfc5 100%);
   border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.interview-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-.interview-photo {
-  width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
-  background: var(--border);
-  /* placeholder */
   display: flex; align-items: center; justify-content: center;
-  color: var(--text3); font-size: 13px;
+  color: var(--text3);
+  font-size: 12px;
+  position: relative;
 }
-.interview-body { padding: 20px; }
-.interview-name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-.interview-role { font-size: 12px; color: var(--text3); margin-bottom: 12px; }
-.interview-quote {
+.rt-photo-area::after {
+  content: "座談会の様子 — 4名が集まっている写真";
+  position: absolute;
+  font-size: 11px;
+  color: var(--text3);
+}
+.rt-members { display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+.rt-member {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.rt-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
   font-size: 14px;
-  color: var(--text2);
-  line-height: 1.8;
-  font-style: italic;
-  border-left: 3px solid var(--accent-light);
-  padding-left: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
 }
+.rt-member-info { flex: 1; }
+.rt-member-name { font-size: 14px; font-weight: 700; }
+.rt-member-role { font-size: 11px; color: var(--text3); }
+
+.talk-block { margin-bottom: 36px; }
+.talk-question {
+  background: var(--bg-dark);
+  color: var(--white);
+  padding: 14px 20px;
+  border-radius: 8px 8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.talk-question span { color: var(--accent); font-size: 11px; display: block; margin-bottom: 2px; letter-spacing: 1px; }
+.talk-answers { border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; }
+.talk-answer {
+  display: flex; gap: 14px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #f0f0ec;
+  background: var(--white);
+}
+.talk-answer:last-child { border-bottom: none; }
+.talk-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.talk-content { flex: 1; }
+.talk-name { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+.talk-text { font-size: 14px; color: var(--text2); line-height: 1.9; }
+.talk-text em { font-style: normal; background: linear-gradient(transparent 60%, rgba(196,168,122,0.25) 60%); }
+
+/* Avatar colors */
+.av-ishida  { background: var(--navy); }
+.av-asaka   { background: #6b705c; }
+.av-nirei   { background: var(--green); }
+.av-namiwake { background: #9c6644; }
 
 /* --- Dark Section --- */
 .section-dark {
@@ -252,11 +344,9 @@ body {
   color: var(--white);
   padding: 80px 24px;
 }
-.section-dark .section { padding: 0; }
+.section-dark .inner { max-width: var(--max-w); margin: 0 auto; }
 .section-dark h2 { border-left-color: var(--accent); color: var(--white); }
 .section-dark .section-lead { color: rgba(255,255,255,0.7); }
-
-/* --- Service Overview --- */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -268,11 +358,13 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px;
   padding: 28px 20px;
+  transition: border-color 0.3s;
 }
+.service-card:hover { border-color: var(--accent); }
 .service-card h3 { font-size: 16px; margin-bottom: 8px; color: var(--accent); }
 .service-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.8; }
 
-/* --- CTA Section --- */
+/* --- CTA --- */
 .cta-section {
   background: var(--bg-warm);
   border: 2px solid var(--accent-light);
@@ -315,39 +407,27 @@ body {
 /* --- Responsive --- */
 @media (max-width: 640px) {
   .nav-links { display: none; }
-  .hero { min-height: 70vh; padding: 100px 20px 60px; }
-  .hero h1 { font-size: 26px; }
+  .nav { top: 32px; }
+  .hero { min-height: 80vh; }
+  .hero h1 { font-size: 24px; }
+  .hero-content { padding: 120px 20px 60px; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .ba-grid { grid-template-columns: 1fr; }
   .ba-arrow { transform: rotate(90deg); }
-  .interview-grid { grid-template-columns: 1fr; }
   .section { padding: 60px 20px; }
-}
-
-/* --- Placeholder styles (remove after content) --- */
-.placeholder {
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 8px,
-    rgba(196,168,122,0.08) 8px,
-    rgba(196,168,122,0.08) 16px
-  );
-  border: 2px dashed var(--accent-light);
-  border-radius: 8px;
-  padding: 32px;
-  text-align: center;
-  color: var(--text3);
-  font-size: 13px;
-  margin: 20px 0;
+  .rt-intro { grid-template-columns: 1fr; }
+  .photo-grid-2, .photo-grid-3 { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ============================== -->
+<!-- MOCK BANNER -->
+<div class="mock-banner">
+  PREVIEW（仮ページ）— 写真・インタビュー内容は4/23実施後に差し替えます
+</div>
+
 <!-- NAV -->
-<!-- ============================== -->
 <nav class="nav">
   <div class="nav-logo">
     <span>KOMATSU WALL-IT</span>
@@ -366,6 +446,10 @@ body {
 <!-- HERO -->
 <!-- ============================== -->
 <section class="hero">
+  <div class="hero-bg">
+    <div class="hero-deco hero-deco-1"></div>
+    <div class="hero-deco hero-deco-2"></div>
+  </div>
   <div class="hero-content">
     <div class="hero-label">_ing Process &amp; Results</div>
     <h1>空間が変われば、<br>人が集まる。<br>人が集まれば、<br><em>未来が動き出す。</em></h1>
@@ -379,7 +463,7 @@ body {
 </section>
 
 <!-- ============================== -->
-<!-- SECTION 1: RESULTS (数字で見る_ing) -->
+<!-- RESULTS -->
 <!-- ============================== -->
 <section class="section" id="results">
   <div class="section-label">Results</div>
@@ -408,7 +492,6 @@ body {
     </div>
   </div>
 
-  <!-- Before / After -->
   <h3 style="font-size:16px; color:var(--text2); margin: 40px 0 16px; text-align:center;">_ing 導入前と導入後</h3>
   <div class="ba-grid">
     <div class="ba-card before">
@@ -424,16 +507,20 @@ body {
     </div>
   </div>
 
-  <div class="placeholder">
-    [写真エリア] オフィス空間のビフォーアフター写真（2〜3枚）<br>
-    ※ 4/23以降に写真素材を差し込み
+  <!-- 仮の写真エリア -->
+  <div class="photo-grid photo-grid-3">
+    <div class="photo-placeholder" style="aspect-ratio:16/10;" data-label="オフィス空間 全景写真"></div>
+    <div class="photo-sub">
+      <div class="photo-placeholder" style="aspect-ratio:1/1;" data-label="アート展示の様子"></div>
+      <div class="photo-placeholder" style="aspect-ratio:1/1;" data-label="オープンオフィス風景"></div>
+    </div>
   </div>
 </section>
 
 <!-- ============================== -->
-<!-- SECTION 2: PROCESS (プロセス) -->
+<!-- PROCESS -->
 <!-- ============================== -->
-<section class="section" id="process" style="background: var(--bg-warm); max-width: 100%; padding: 80px 24px;">
+<section id="process" style="background: var(--bg-warm); padding: 80px 24px;">
   <div style="max-width: var(--max-w); margin: 0 auto;">
     <div class="section-label">Process</div>
     <h2>_ing が歩んだ10ヶ月</h2>
@@ -444,153 +531,345 @@ body {
 
     <div class="timeline">
       <div class="tl-item">
-        <div class="tl-period">Phase 1</div>
-        <div class="tl-title">戦略策定 — 「アート &times; 空間 &times; 組織開発」を言語化</div>
+        <div class="tl-period">Phase 1 &#8212; 戦略策定</div>
+        <div class="tl-title">「アート &times; 空間 &times; 組織開発」を言語化</div>
         <div class="tl-desc">
-          パーティション整備・空間リニューアル設計に着手。<br>
-          自社の強みである「建具工事の技術力」と「アートの創造性」の融合を定義。
+          自社の強みである「建具工事の技術力」と「アートの創造性」の融合を定義。<br>
+          パーティション整備・空間リニューアル設計に着手。
         </div>
+        <div class="photo-placeholder" style="aspect-ratio:3/1; margin-top:12px;" data-label="リニューアル計画の図面・打ち合わせ風景"></div>
       </div>
       <div class="tl-item">
-        <div class="tl-period">Phase 2</div>
-        <div class="tl-title">空間完成 — オープンオフィスに600名超が来場</div>
+        <div class="tl-period">Phase 2 &#8212; 空間完成</div>
+        <div class="tl-title">オープンオフィスに600名超が来場</div>
         <div class="tl-desc">
-          パーティション整備完了、アート作品設置。<br>
-          オープンオフィスイベント開催、Xキャンペーンで30,000リプライを超える反響。
+          パーティション整備完了、アート作品を設置。<br>
+          オープンオフィスイベント開催。Xキャンペーンで30,000リプライを超える反響。
         </div>
+        <div class="photo-placeholder" style="aspect-ratio:3/1; margin-top:12px;" data-label="オープンオフィス当日の賑わい"></div>
       </div>
       <div class="tl-item">
-        <div class="tl-period">Phase 3</div>
-        <div class="tl-title">採用成果 — 20代の若手3名が「自分で選んで」入社</div>
+        <div class="tl-period">Phase 3 &#8212; 採用成果</div>
+        <div class="tl-title">20代の若手3名が「自分で選んで」入社</div>
         <div class="tl-desc">
           18歳の職人、23歳の経理、22歳の2級建築士。<br>
           建設業界の深刻な人手不足の中、有名企業ではない地方企業に若者が集まり始めた。
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-period">Phase 4</div>
-        <div class="tl-title">自走 — 社員が自ら組織を設計し、動き始める</div>
+        <div class="tl-period">Phase 4 &#8212; 自走</div>
+        <div class="tl-title">社員が自ら組織を設計し、動き始める</div>
         <div class="tl-desc">
           社員主導のオフィスリノベーション計画始動。<br>
-          アーティスト同士の紹介が自走開始。シャッターアート「COUPLER」が完成。
+          アーティスト同士の紹介が自走開始。シャッターアート「COUPLER」完成。
         </div>
+        <div class="photo-placeholder" style="aspect-ratio:3/1; margin-top:12px;" data-label="COUPLER完成写真"></div>
       </div>
-    </div>
-
-    <div class="placeholder">
-      [写真エリア] 各フェーズの象徴的な写真（タイムライン横に配置）<br>
-      ※ 4/23以降に差し込み
     </div>
   </div>
 </section>
 
 <!-- ============================== -->
-<!-- SECTION 3: COUPLER (シャッターアート) -->
+<!-- COUPLER -->
 <!-- ============================== -->
 <section class="section">
   <div class="section-label">Shutter Art</div>
-  <h2>COUPLER — 街と企業をつなぐアート</h2>
+  <h2>COUPLER &#8212; 街と企業をつなぐアート</h2>
   <p class="section-lead">
     美術家・指江昌克氏によるシャッターアート「COUPLER」。<br>
-    建物の外壁が、24時間365日、街と企業をつなぐメディアになりました。<br>
-    閉じるためのシャッターが「つなぐ」面に変わる。それは私たちの仕事そのものです。
+    閉じるためのシャッターが「つなぐ」面に変わる。<br>
+    建物の外壁が、24時間365日、街と企業をつなぐメディアになりました。
   </p>
 
-  <div class="placeholder">
-    [写真エリア] COUPLER完成写真（メイン1枚 + サブ2〜3枚）<br>
-    ※ ing-couplerサイトから流用可能な素材あり
+  <div class="photo-grid photo-grid-3">
+    <div class="photo-placeholder" style="aspect-ratio:4/3;" data-label="COUPLER 正面全景"></div>
+    <div class="photo-sub">
+      <div class="photo-placeholder" style="aspect-ratio:4/3;" data-label="制作中の指江氏"></div>
+      <div class="photo-placeholder" style="aspect-ratio:4/3;" data-label="作品ディテール"></div>
+    </div>
   </div>
 
-  <div style="margin-top: 24px; padding: 24px; background: var(--bg-warm); border-radius: 8px; border: 1px solid var(--accent-light);">
-    <p style="font-size: 14px; color: var(--text2); line-height: 1.9;">
-      <strong style="color: var(--text1);">指江 昌克（Masakatsu Sashie）</strong><br>
-      金沢市出身、金沢を拠点に活動する美術家。浮遊する球体を描いた絵画シリーズが代名詞。
-      ネオンサイン、錆びたトタン、室外機、自動販売機など都市に溢れるモチーフを再構成し、
-      日本国内のみならず世界各地のギャラリーで作品を発表している。
-    </p>
+  <div style="margin-top: 24px; padding: 24px; background: var(--bg-warm); border-radius: 8px; border: 1px solid var(--accent-light); display: flex; gap: 20px; align-items: center;">
+    <div class="photo-placeholder" style="width: 80px; height: 80px; border-radius: 50%; flex-shrink: 0;" data-label=""></div>
+    <div>
+      <p style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">指江 昌克<span style="font-size: 12px; color: var(--text3); font-weight: 400; margin-left: 8px;">Masakatsu Sashie</span></p>
+      <p style="font-size: 13px; color: var(--text2); line-height: 1.8;">
+        金沢市出身、金沢を拠点に活動する美術家。浮遊する球体を描いた絵画シリーズが代名詞。
+        ネオンサイン、錆びたトタン、室外機、自動販売機など都市に溢れるモチーフを再構成し、
+        日本国内のみならず世界各地のギャラリーで作品を発表している。
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- ============================== -->
-<!-- SECTION 4: VOICES (社員の声) -->
+<!-- VOICES &#8212; 座談会形式 -->
 <!-- ============================== -->
-<section class="section" id="voices" style="background: var(--bg-warm); max-width: 100%; padding: 80px 24px;">
+<section id="voices" style="background: var(--bg-warm); padding: 80px 24px;">
   <div style="max-width: var(--max-w); margin: 0 auto;">
-    <div class="section-label">Voices</div>
-    <h2>なぜ、この会社を選んだのか</h2>
+    <div class="section-label">Voices &#8212; Roundtable</div>
+    <h2>「なぜ、この会社を選んだのか」</h2>
     <p class="section-lead">
-      _ingの取り組みを知り、自ら選んで入社した若手社員たち。<br>
-      彼らが語る「この会社を選んだ理由」は、<br>
-      空間とアートが企業の魅力をどう変えるかを物語っています。
+      _ingの取り組みを知り、自ら選んで入社した4人の若手社員。<br>
+      一つのテーブルを囲んで語ってもらいました。
     </p>
 
-    <div class="interview-grid">
-      <!-- 石田丈一郎 -->
-      <div class="interview-card">
-        <div class="interview-photo">
-          <span>[写真: 石田丈一郎]</span>
-        </div>
-        <div class="interview-body">
-          <div class="interview-name">石田 丈一郎</div>
-          <div class="interview-role">製品開発・提案チーム｜2級建築士</div>
-          <div class="interview-quote">
-            <!-- 4/23インタビュー後に差し替え -->
-            [インタビュー内容は4/23実施後に掲載]
+    <!-- 座談会イントロ -->
+    <div class="rt-intro">
+      <div class="rt-photo-area"></div>
+      <div class="rt-members">
+        <div class="rt-member">
+          <div class="rt-avatar av-ishida">石田</div>
+          <div class="rt-member-info">
+            <div class="rt-member-name">石田 丈一郎</div>
+            <div class="rt-member-role">製品開発・提案チーム｜2級建築士・22歳</div>
           </div>
         </div>
-      </div>
-
-      <!-- 浅加望愛 -->
-      <div class="interview-card">
-        <div class="interview-photo">
-          <span>[写真: 浅加望愛]</span>
-        </div>
-        <div class="interview-body">
-          <div class="interview-name">浅加 望愛</div>
-          <div class="interview-role">企画・広報チーム</div>
-          <div class="interview-quote">
-            [インタビュー内容は4/23実施後に掲載]
+        <div class="rt-member">
+          <div class="rt-avatar av-asaka">浅加</div>
+          <div class="rt-member-info">
+            <div class="rt-member-name">浅加 望愛</div>
+            <div class="rt-member-role">企画・広報チーム｜_ingの少し前に入社</div>
           </div>
         </div>
-      </div>
-
-      <!-- 仁禮聖知 -->
-      <div class="interview-card">
-        <div class="interview-photo">
-          <span>[写真: 仁禮聖知]</span>
-        </div>
-        <div class="interview-body">
-          <div class="interview-name">仁禮 聖知</div>
-          <div class="interview-role">施工・工程管理チーム</div>
-          <div class="interview-quote">
-            [インタビュー内容は4/23実施後に掲載]
+        <div class="rt-member">
+          <div class="rt-avatar av-nirei">仁禮</div>
+          <div class="rt-member-info">
+            <div class="rt-member-name">仁禮 聖知</div>
+            <div class="rt-member-role">施工・工程管理チーム｜18歳</div>
           </div>
         </div>
-      </div>
-
-      <!-- 波分優花 -->
-      <div class="interview-card">
-        <div class="interview-photo">
-          <span>[写真: 波分優花]</span>
-        </div>
-        <div class="interview-body">
-          <div class="interview-name">波分 優花</div>
-          <div class="interview-role">企画・広報チーム</div>
-          <div class="interview-quote">
-            [インタビュー内容は4/23実施後に掲載]
+        <div class="rt-member">
+          <div class="rt-avatar av-namiwake">波分</div>
+          <div class="rt-member-info">
+            <div class="rt-member-name">波分 優花</div>
+            <div class="rt-member-role">企画・広報チーム</div>
           </div>
         </div>
       </div>
     </div>
 
-    <p style="text-align:center; font-size:12px; color:var(--text3); margin-top:16px;">
-      ※ 2026年4月23日インタビュー実施予定。実施後に各コンテンツを掲載します。
+    <!-- Q1: この会社をどうやって知りましたか？ -->
+    <div class="talk-block">
+      <div class="talk-question">
+        <span>Question 01</span>
+        小松ウォールアイティのことを、どうやって知りましたか？
+      </div>
+      <div class="talk-answers">
+        <div class="talk-answer">
+          <div class="talk-avatar av-nirei">仁禮</div>
+          <div class="talk-content">
+            <div class="talk-name">仁禮 聖知</div>
+            <div class="talk-text">
+              高校の就職指導の先生から紹介してもらったのがきっかけです。正直、最初は社名を聞いても「ウォールアイティ？」って感じで、何の会社かよく分かっていなかったです（笑）。<em>でも会社のことを調べていくうちに、普通の建設会社とは何か違うぞ、と。</em>
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-namiwake">波分</div>
+          <div class="talk-content">
+            <div class="talk-name">波分 優花</div>
+            <div class="talk-text">
+              私は転職サイトで見つけました。経理の仕事を探していたんですが、<em>会社のページを開いた時に「え、建設会社なのにこんなオフィスなの？」って驚いて。</em>それでちょっと気になって、詳しく見てみようと思ったのが最初です。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2: 最初の印象は？ -->
+    <div class="talk-block">
+      <div class="talk-question">
+        <span>Question 02</span>
+        _ingの取り組みを知った時、どう感じましたか？
+      </div>
+      <div class="talk-answers">
+        <div class="talk-answer">
+          <div class="talk-avatar av-ishida">石田</div>
+          <div class="talk-content">
+            <div class="talk-name">石田 丈一郎</div>
+            <div class="talk-text">
+              建築を学んできた自分からすると、<em>空間にアートを取り入れて企業の価値を変えるっていう発想がすごく新鮮だった。</em>設計事務所やゼネコンでは「機能」の話ばかりなので。ここでは「空間が人に与える影響」を本気で考えているんだなと。
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-asaka">浅加</div>
+          <div class="talk-content">
+            <div class="talk-name">浅加 望愛</div>
+            <div class="talk-text">
+              私は_ingが始まる少し前に入社したので、変化を内側から見てきました。正直、最初は「アートで何が変わるんだろう」って半信半疑でした。<em>でも実際にオフィスの空間が変わっていくのを毎日見ていたら、来る人の表情が明らかに変わったんです。</em>「すごいね、ここ」って言ってもらえることが増えて。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3: 決め手 -->
+    <div class="talk-block">
+      <div class="talk-question">
+        <span>Question 03</span>
+        他にも選択肢があった中で、この会社を選んだ一番の理由は？
+      </div>
+      <div class="talk-answers">
+        <div class="talk-answer">
+          <div class="talk-avatar av-ishida">石田</div>
+          <div class="talk-content">
+            <div class="talk-name">石田 丈一郎</div>
+            <div class="talk-text">
+              2級建築士の資格があるので、設計事務所やゼネコンも受けていました。でも、<em>ここは「空間をつくる」だけじゃなくて「空間で何を起こすか」まで考えている。</em>建築士としてその先を見てみたかった。規模が小さいからこそ、自分のアイデアがすぐ形になるかもしれないとも思いました。
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-nirei">仁禮</div>
+          <div class="talk-content">
+            <div class="talk-name">仁禮 聖知</div>
+            <div class="talk-text">
+              大きい会社だと、最初の何年かはずっと同じ作業の繰り返しだって聞いていて。ここは人数が少ない分、<em>いろんなことを早くから任せてもらえそうだと感じた</em>のが大きかったです。あと、見学に来た時にオフィスにアートがあって、「こういう会社で働きたいな」って素直に思いました。
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-namiwake">波分</div>
+          <div class="talk-content">
+            <div class="talk-name">波分 優花</div>
+            <div class="talk-text">
+              会計事務所も受けていたんですが、そっちはずっと数字だけの世界になりそうで。ここは経理もやりつつ、<em>会社全体が新しいことに挑戦している空気があった。</em>面接の時に社長が「経理の人にも_ingに関わってほしい」と言ってくれたのが嬉しかったです。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: _ingの影響度 -->
+    <div class="talk-block">
+      <div class="talk-question">
+        <span>Question 04</span>
+        _ingの取り組みは、入社の決め手にどのくらい影響しましたか？
+      </div>
+      <div class="talk-answers">
+        <div class="talk-answer">
+          <div class="talk-avatar av-ishida">石田</div>
+          <div class="talk-content">
+            <div class="talk-name">石田 丈一郎</div>
+            <div class="talk-text">
+              <em>正直、かなり大きかったです。</em>_ingがなかったら、この会社を知ることすらなかったかもしれない。
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-nirei">仁禮</div>
+          <div class="talk-content">
+            <div class="talk-name">仁禮 聖知</div>
+            <div class="talk-text">
+              僕の場合は、最初は_ingのことはよく知らなくて。でも見学に来た時にオフィスを見て「他の会社と全然違う」って思ったので、<em>知らないうちに_ingの影響を受けていたんだと思います。</em>
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-namiwake">波分</div>
+          <div class="talk-content">
+            <div class="talk-name">波分 優花</div>
+            <div class="talk-text">
+              影響は大きかったです。<em>建設会社でアートをやっているって、それだけで「この会社は何か面白いことを考えている」って伝わるんですよね。</em>
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-asaka">浅加</div>
+          <div class="talk-content">
+            <div class="talk-name">浅加 望愛</div>
+            <div class="talk-text">
+              私は_ingの前に入社しているので直接の影響はないんですが、<em>もし今就活していたら、間違いなく_ingを見て「ここに入りたい」って思うと思います。</em>それくらい会社の見え方が変わりました。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5: 入社後のリアル -->
+    <div class="talk-block">
+      <div class="talk-question">
+        <span>Question 05</span>
+        実際に入社してみて、イメージと違ったことは？
+      </div>
+      <div class="talk-answers">
+        <div class="talk-answer">
+          <div class="talk-avatar av-nirei">仁禮</div>
+          <div class="talk-content">
+            <div class="talk-name">仁禮 聖知</div>
+            <div class="talk-text">
+              現場の仕事は想像以上に体力が必要でした（笑）。でも<em>先輩たちが丁寧に教えてくれるので、毎日少しずつできることが増えていくのが嬉しい。</em>あと、思った以上に社員同士の距離が近い。
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-asaka">浅加</div>
+          <div class="talk-content">
+            <div class="talk-name">浅加 望愛</div>
+            <div class="talk-text">
+              _ingが始まってからは、<em>外部の人がオフィスに来ることが本当に増えました。</em>以前は静かだったのに、今は「次はいつ見学の方が来るの？」って日常会話に出るくらい。会社の雰囲気がどんどん外向きになっていくのを感じます。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6: 同世代への紹介 -->
+    <div class="talk-block">
+      <div class="talk-question">
+        <span>Question 06</span>
+        同世代の友達に「どんな会社？」と聞かれたら、何と紹介しますか？
+      </div>
+      <div class="talk-answers">
+        <div class="talk-answer">
+          <div class="talk-avatar av-nirei">仁禮</div>
+          <div class="talk-content">
+            <div class="talk-name">仁禮 聖知</div>
+            <div class="talk-text">
+              <em>「建設会社なのにアートがあるんだよ」って言うと、みんな「え？」ってなります（笑）。</em>そこから話が広がるので、説明しやすい会社だなって思います。
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-ishida">石田</div>
+          <div class="talk-content">
+            <div class="talk-name">石田 丈一郎</div>
+            <div class="talk-text">
+              「空間の可能性を本気で考えている会社」ですかね。<em>ただの工事会社じゃない。空間を通じて人や企業の未来を変えようとしている。</em>
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-namiwake">波分</div>
+          <div class="talk-content">
+            <div class="talk-name">波分 優花</div>
+            <div class="talk-text">
+              <em>「新しいことに挑戦し続けている会社」</em>かな。建設業って保守的なイメージがあると思うんですけど、ここは全然違う。それが外から見ても伝わるようになってきたのが、すごくいいなと思っています。
+            </div>
+          </div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-asaka">浅加</div>
+          <div class="talk-content">
+            <div class="talk-name">浅加 望愛</div>
+            <div class="talk-text">
+              <em>「変わり続ける会社」。</em>_ingが始まってから、本当に毎月のように何か新しいことが起きている。入社した時とは別の会社みたいです（笑）。でもそれが楽しい。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center; font-size: 12px; color: var(--text3); margin-top: 32px; padding: 16px; background: var(--white); border-radius: 6px; border: 1px dashed var(--border);">
+      ※ 上記の発言内容はすべて仮テキストです。2026年4月23日の座談会実施後に、実際の発言内容に差し替えます。
     </p>
   </div>
 </section>
 
 <!-- ============================== -->
-<!-- SECTION 5: INDUSTRY CONTEXT -->
+<!-- INDUSTRY CONTEXT -->
 <!-- ============================== -->
 <section class="section">
   <div class="section-label">Context</div>
@@ -621,54 +900,42 @@ body {
       この環境下で、従業員33名の地方企業が「空間デザイン &times; アート」のアプローチで
       20代前半の若手を採用できたことは、業界に対する一つの回答です。
     </p>
-    <p style="font-size: 14px; color: var(--accent); margin-top: 16px; font-weight: 600;">
+    <p style="font-size: 15px; color: var(--accent); margin-top: 16px; font-weight: 600;">
       有名企業でなくても、空間とブランドの力で若者が自ら選んで来る。
     </p>
   </div>
 </section>
 
 <!-- ============================== -->
-<!-- SECTION 6: SERVICE (ご提供できること) -->
+<!-- SERVICE -->
 <!-- ============================== -->
 <div class="section-dark" id="service">
-  <div class="section">
+  <div class="inner">
     <div class="section-label">Service</div>
     <h2>私たちがご提供できること</h2>
     <p class="section-lead">
       自社で実践し、成果を出したからこそ提供できる。<br>
       空間 &times; アートで企業の魅力を変えるサービスです。
     </p>
-
     <div class="service-grid">
       <div class="service-card">
         <h3>空間診断</h3>
-        <p>
-          御社のオフィス空間を訪問し、課題とポテンシャルを診断。
-          アートや空間デザインでどう変わるか、具体的にご提案します。
-        </p>
+        <p>御社のオフィス空間を訪問し、課題とポテンシャルを診断。アートや空間デザインでどう変わるか、具体的にご提案します。</p>
       </div>
       <div class="service-card">
         <h3>アートオフィス<br>プロデュース</h3>
-        <p>
-          空間設計からアート選定・施工まで一体で提供。
-          パーティション施工力とアートプロデュースを兼ね備えた、
-          北陸唯一のサービスです。
-        </p>
+        <p>空間設計からアート選定・施工まで一体で提供。パーティション施工力とアートプロデュースを兼ね備えた、北陸唯一のサービスです。</p>
       </div>
       <div class="service-card">
         <h3>アート定期入替<br>サブスクリプション</h3>
-        <p>
-          四半期ごとにアート作品を入れ替え。
-          空間に常に新鮮なストーリーを。
-          来訪者・社員に新しい刺激を提供し続けます。
-        </p>
+        <p>四半期ごとにアート作品を入れ替え。空間に常に新鮮なストーリーを。来訪者・社員に新しい刺激を提供し続けます。</p>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ============================== -->
-<!-- SECTION 7: CTA -->
+<!-- CTA -->
 <!-- ============================== -->
 <section class="section" id="contact">
   <div class="cta-section">
