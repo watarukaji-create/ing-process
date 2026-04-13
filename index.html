@@ -126,7 +126,7 @@ body {
   max-width: 720px; padding: 140px 24px 80px;
 }
 .hero-logo {
-  width: 180px; margin: 0 auto 32px;
+  width: 340px; margin: 0 auto 32px;
   opacity: 0; animation: fade-up 0.8s 0.3s forwards;
 }
 .hero h1 {
@@ -178,6 +178,43 @@ body {
 @keyframes scroll-pulse { 0%,100%{opacity:1;transform:scaleY(1);} 50%{opacity:0.3;transform:scaleY(0.5);} }
 @keyframes fade-up { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
 @keyframes fade-in { from{opacity:0;} to{opacity:1;} }
+
+/* --- Falling Petals — hero only --- */
+.petal-canvas {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 1; overflow: hidden;
+  -webkit-mask-image: radial-gradient(ellipse 360px 480px at 50% 45%, transparent 0%, transparent 60%, black 100%);
+  mask-image: radial-gradient(ellipse 360px 480px at 50% 45%, transparent 0%, transparent 60%, black 100%);
+}
+.petal {
+  position: absolute; top: -60px;
+  width: var(--petal-size, 28px); height: var(--petal-size, 28px);
+  opacity: 0;
+  animation: petal-fall var(--petal-dur, 8s) var(--petal-delay, 0s) ease-in-out infinite;
+}
+.petal img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+@keyframes petal-fall {
+  0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg) scale(0.7); }
+  8%   { opacity: 1; }
+  50%  { opacity: 1; transform: translateY(40vh) translateX(var(--petal-sway, 30px)) rotate(180deg) scale(1); }
+  92%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(85vh) translateX(var(--petal-sway2, -20px)) rotate(360deg) scale(0.6); }
+}
+
+/* --- Static background marks for content sections --- */
+.bg-mark {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+}
+.bg-mark img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Ensure photos stay above bg marks */
+.photo-grid, .tl-photo, .coupler-hero-img, .ba-grid, img[src$=".jpg"], img[src$=".jpeg"] {
+  position: relative;
+  z-index: 1;
+}
 
 /* --- Reveal --- */
 .reveal {
@@ -241,7 +278,7 @@ body {
 }
 .coupler-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(26,26,46,0.85) 0%, rgba(26,26,46,0.2) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(26,26,46,0.92) 0%, rgba(26,26,46,0.7) 40%, rgba(26,26,46,0.3) 100%);
   display: flex; align-items: flex-end;
   padding: 48px 32px;
 }
@@ -260,10 +297,11 @@ body {
   margin-bottom: 12px;
 }
 .coupler-hero-text p {
-  font-size: 15px;
-  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  color: #ffffff;
   line-height: 2;
-  max-width: 600px;
+  max-width: 640px;
+  font-weight: 500;
 }
 
 /* --- KPI --- */
@@ -597,7 +635,7 @@ body {
   .artist-card { flex-direction: column; text-align: center; }
 }
 @media (max-width: 480px) {
-  .hero-logo { width: 120px; }
+  .hero-logo { width: 220px; }
   .hero h1 { font-size: 22px; }
   .kpi-number { font-size: 36px; }
 }
@@ -629,13 +667,10 @@ body {
 <!-- HERO -->
 <!-- ============================== -->
 <section class="hero">
-  <img class="hero-blob hero-blob-1" src="assets/images/blob_tl.png" alt="">
-  <img class="hero-blob hero-blob-2" src="assets/images/blob_bl.png" alt="">
-  <img class="hero-blob hero-blob-3" src="assets/images/blob_green_pink_sm.png" alt="">
-  <img class="hero-blob hero-blob-4" src="assets/images/blob_blue_yellow_sm.png" alt="">
-  <img class="hero-blob hero-blob-5" src="assets/images/blob_green_yellow_sm.png" alt="">
+  <div class="petal-canvas" id="petalCanvas"></div>
   <div class="hero-content">
-    <img class="hero-logo" src="assets/images/kv_transparent.png" alt="_ing キービジュアル">
+    <img class="hero-logo" src="assets/images/kv_cropped.png" alt="_ing キービジュアル">
+    <p style="font-family:var(--font-body); font-size:clamp(14px, 2.5vw, 18px); color:var(--text2); letter-spacing:0.15em; margin-bottom:12px; opacity:0; animation:fade-up 0.8s 0.45s forwards;">空間に新しいストーリーを。</p>
     <h1>空間が変われば、人が集まる。<br>人が集まれば、<span class="hl-pink">未来が動き出す。</span></h1>
     <p class="hero-sub">
       従業員33名の金沢の建具工事会社が、<br>
@@ -657,12 +692,13 @@ body {
   <img class="coupler-hero-img" src="assets/images/coupler_sashie.jpeg" alt="COUPLER — 指江昌克によるシャッターアート">
   <div class="coupler-hero-overlay">
     <div class="coupler-hero-text">
-      <div class="section-label" style="color:var(--yellow);">Shutter Art</div>
+      <div class="section-label" style="color:var(--yellow);">Shutter Art — Exhibition Vol.3</div>
       <h2>COUPLER</h2>
       <p>
-        美術家・指江昌克氏によるシャッターアート。<br>
-        「分ける」から「つなぐ」を表現する象徴的プロジェクト。<br>
-        閉じたシャッターが、24時間365日、街と企業をつなぐメディアに。
+        金沢美術工芸大学出身、国際的に活躍する美術家・指江昌克氏によるシャッターアート。<br>
+        建具工事会社のシャッターを「分ける」ものから「つなぐ」ものへ — <br>
+        閉じたシャッターが、24時間365日、街と企業をつなぐメディアになる。<br>
+        _ingの象徴的プロジェクトです。
       </p>
     </div>
   </div>
@@ -881,12 +917,12 @@ body {
 
   <div class="kpi-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
     <div class="kpi-card">
-      <div class="kpi-number"><span class="count-up" data-target="35">0</span><span class="kpi-unit">%</span></div>
-      <div class="kpi-label">就業者のうち55歳以上の割合</div>
+      <div class="kpi-number"><span class="count-up" data-target="36">0</span><span class="kpi-unit">%</span></div>
+      <div class="kpi-label">就業者のうち55歳以上の割合<br><small style="color:var(--text3);">出典: 国土交通省 / 総務省「労働力調査」</small></div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-number"><span class="count-up" data-target="11">0</span><span class="kpi-unit">%</span></div>
-      <div class="kpi-label">29歳以下の就業者割合</div>
+      <div class="kpi-number"><span class="count-up" data-target="12">0</span><span class="kpi-unit">%</span></div>
+      <div class="kpi-label">29歳以下の就業者割合<br><small style="color:var(--text3);">出典: 国土交通省 / 総務省「労働力調査」</small></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-number"><span class="count-up" data-target="33">0</span><span class="kpi-unit">名</span></div>
@@ -915,7 +951,7 @@ body {
       <div class="section-label">Voices — Roundtable</div>
       <h2>「なぜ、この会社を選んだのか」</h2>
       <p class="section-lead">
-        _ingの取り組みを知り、自ら選んで入社した4人の若手社員。<br>
+        それぞれの理由で小松ウォールアイティを選んだ4人の若手社員。<br>
         一つのテーブルを囲んで語ってもらいました。
       </p>
     </div>
@@ -925,19 +961,19 @@ body {
       <div class="rt-members">
         <div class="rt-member">
           <div class="rt-avatar av-ishida">石田</div>
-          <div><div class="rt-member-name">石田 丈一郎</div><div class="rt-member-role">製品開発・提案チーム｜2級建築士・22歳</div></div>
+          <div><div class="rt-member-name">石田 丈一郎</div><div class="rt-member-role">製品開発・提案チーム｜_ing以前に入社・22歳</div></div>
         </div>
         <div class="rt-member">
           <div class="rt-avatar av-asaka">浅加</div>
-          <div><div class="rt-member-name">浅加 望愛</div><div class="rt-member-role">企画・広報チーム｜_ingの少し前に入社</div></div>
+          <div><div class="rt-member-name">浅加 望愛</div><div class="rt-member-role">企画・広報チーム｜テレビで_ingを見て入社</div></div>
         </div>
         <div class="rt-member">
           <div class="rt-avatar av-nirei">仁禮</div>
-          <div><div class="rt-member-name">仁禮 聖知</div><div class="rt-member-role">施工・工程管理チーム｜18歳</div></div>
+          <div><div class="rt-member-name">仁禮 聖知</div><div class="rt-member-role">施工・工程管理チーム｜金沢市立工業高校出身・18歳</div></div>
         </div>
         <div class="rt-member">
-          <div class="rt-avatar av-namiwake">波分</div>
-          <div><div class="rt-member-name">波分 優花</div><div class="rt-member-role">企画・広報チーム</div></div>
+          <div class="rt-avatar av-namiwake">浪分</div>
+          <div><div class="rt-member-name">浪分 優花</div><div class="rt-member-role">営業職｜前職:建設会社・2級建築士</div></div>
         </div>
       </div>
     </div>
@@ -947,12 +983,20 @@ body {
       <div class="talk-question"><span>Question 01</span>小松ウォールアイティのことを、どうやって知りましたか？</div>
       <div class="talk-answers">
         <div class="talk-answer">
-          <div class="talk-avatar av-nirei">仁禮</div>
-          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text">高校の就職指導の先生から紹介してもらったのがきっかけです。正直、最初は社名を聞いても「ウォールアイティ？」って感じで、何の会社かよく分かっていなかったです（笑）。<em>でも会社のことを調べていくうちに、普通の建設会社とは何か違うぞ、と。</em></div></div>
+          <div class="talk-avatar av-ishida">石田</div>
+          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">_ingが始まる前に入社しました。会社のことを調べていくうちに、<em>「この人たちと一緒に働いてみたい」と思ったんです。</em>いつか自分も役職に就いて、会社を引っ張っていきたいという気持ちもありました。</div></div>
         </div>
         <div class="talk-answer">
-          <div class="talk-avatar av-namiwake">波分</div>
-          <div class="talk-content"><div class="talk-name">波分 優花</div><div class="talk-text">私は転職サイトで見つけました。経理の仕事を探していたんですが、<em>会社のページを開いた時に「え、建設会社なのにこんなオフィスなの？」って驚いて。</em>それでちょっと気になって、詳しく見てみようと思ったのが最初です。</div></div>
+          <div class="talk-avatar av-asaka">浅加</div>
+          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text"><em>テレビで_ingの取り組みが紹介されていたのを見たのがきっかけです。</em>「建設会社がアートをやっている？」って驚いて。画面越しでも伝わる熱量があって、「ここで働いてみたい」と思いました。</div></div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-nirei">仁禮</div>
+          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text"><em>金沢市立工業高校で、先生から紹介してもらいました。</em>正直、最初は社名を聞いても「ウォールアイティ？」って感じで（笑）。でも調べていくうちに、普通の建設会社とは何か違うぞ、と。職人になりたいという思いがあったので、ここだと思いました。</div></div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-namiwake">浪分</div>
+          <div class="talk-content"><div class="talk-name">浪分 優花</div><div class="talk-text"><em>うちの常務と親が知り合いで、それがきっかけで知りました。</em>前職は建設会社だったんですが、もっとお客様に直接貢献できる仕事がしたくて。2級建築士の資格を取って、営業職として応募しました。</div></div>
         </div>
       </div>
     </div>
@@ -963,11 +1007,11 @@ body {
       <div class="talk-answers">
         <div class="talk-answer">
           <div class="talk-avatar av-ishida">石田</div>
-          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">建築を学んできた自分からすると、<em>空間にアートを取り入れて企業の価値を変えるっていう発想がすごく新鮮だった。</em>設計事務所やゼネコンでは「機能」の話ばかりなので。ここでは「空間が人に与える影響」を本気で考えているんだなと。</div></div>
+          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">自分は_ingが始まる前から在籍していたので、変化を内側から見てきました。<em>正直、最初は「アートで何が変わるんだろう」って思っていました。でもオフィスが変わっていくにつれて、来る人の反応が明らかに変わったんです。</em>「この会社、面白いことやってるね」って。</div></div>
         </div>
         <div class="talk-answer">
           <div class="talk-avatar av-asaka">浅加</div>
-          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text">私は_ingが始まる少し前に入社したので、変化を内側から見てきました。正直、最初は「アートで何が変わるんだろう」って半信半疑でした。<em>でも実際にオフィスの空間が変わっていくのを毎日見ていたら、来る人の表情が明らかに変わったんです。</em>「すごいね、ここ」って言ってもらえることが増えて。</div></div>
+          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text">テレビで見た時の第一印象は「建設会社がこんなことやるの？」っていう驚きでした。<em>でも調べていくうちに、空間にアートを取り入れて企業の価値を変えるっていう発想がすごく新鮮だと感じて。</em>「ここでなら、自分も何か新しいことに関われるかも」と思いました。</div></div>
         </div>
       </div>
     </div>
@@ -978,15 +1022,15 @@ body {
       <div class="talk-answers">
         <div class="talk-answer">
           <div class="talk-avatar av-ishida">石田</div>
-          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">2級建築士の資格があるので、設計事務所やゼネコンも受けていました。でも、<em>ここは「空間をつくる」だけじゃなくて「空間で何を起こすか」まで考えている。</em>建築士としてその先を見てみたかった。規模が小さいからこそ、自分のアイデアがすぐ形になるかもしれないとも思いました。</div></div>
+          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">一番は「人」ですね。<em>面接で会った社員の方々と話して、「この人たちと一緒に働きたい」と直感的に思ったんです。</em>いつか自分も役職に就いて、この会社を引っ張っていきたいという野心もありました。規模が小さいからこそ、自分の成長が会社の成長に直結する環境だと感じて。</div></div>
         </div>
         <div class="talk-answer">
           <div class="talk-avatar av-nirei">仁禮</div>
-          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text">大きい会社だと、最初の何年かはずっと同じ作業の繰り返しだって聞いていて。ここは人数が少ない分、<em>いろんなことを早くから任せてもらえそうだと感じた</em>のが大きかったです。あと、見学に来た時にオフィスにアートがあって、「こういう会社で働きたいな」って素直に思いました。</div></div>
+          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text">大きい会社だと、最初の何年かはずっと同じ作業の繰り返しだって聞いていて。<em>僕は職人になりたかったので、早くからいろんなことを任せてもらえそうなここを選びました。</em>見学に来た時にオフィスにアートがあって、「こういう会社で働きたいな」って素直に思いました。</div></div>
         </div>
         <div class="talk-answer">
-          <div class="talk-avatar av-namiwake">波分</div>
-          <div class="talk-content"><div class="talk-name">波分 優花</div><div class="talk-text">会計事務所も受けていたんですが、そっちはずっと数字だけの世界になりそうで。ここは経理もやりつつ、<em>会社全体が新しいことに挑戦している空気があった。</em>面接の時に社長が「経理の人にも_ingに関わってほしい」と言ってくれたのが嬉しかったです。</div></div>
+          <div class="talk-avatar av-namiwake">浪分</div>
+          <div class="talk-content"><div class="talk-name">浪分 優花</div><div class="talk-text">前職も建設会社だったんですが、<em>もっとお客様に直接貢献できる仕事がしたかったんです。</em>2級建築士の資格を活かして営業職として働けるところを探していて、ここなら技術的な裏付けを持ってお客様に提案できると思いました。</div></div>
         </div>
       </div>
     </div>
@@ -997,19 +1041,19 @@ body {
       <div class="talk-answers">
         <div class="talk-answer">
           <div class="talk-avatar av-ishida">石田</div>
-          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text"><em>正直、かなり大きかったです。</em>_ingがなかったら、この会社を知ることすらなかったかもしれない。</div></div>
+          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">自分は_ingが始まる前に入社したので、直接の影響はなかったんですが、<em>もし今就活していたら、間違いなく_ingを見て「ここだ」って思ったはずです。</em>それくらい会社の見え方が変わりました。中にいる自分が言うんだから間違いないです。</div></div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-asaka">浅加</div>
+          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text"><em>正直、決定打でした。</em>テレビで_ingを見ていなかったら、この会社を知ることすらなかったかもしれない。アートで空間を変えるっていう取り組みが、「ここなら何か新しい経験ができる」って確信させてくれました。</div></div>
         </div>
         <div class="talk-answer">
           <div class="talk-avatar av-nirei">仁禮</div>
           <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text">僕の場合は、最初は_ingのことはよく知らなくて。でも見学に来た時にオフィスを見て「他の会社と全然違う」って思ったので、<em>知らないうちに_ingの影響を受けていたんだと思います。</em></div></div>
         </div>
         <div class="talk-answer">
-          <div class="talk-avatar av-namiwake">波分</div>
-          <div class="talk-content"><div class="talk-name">波分 優花</div><div class="talk-text">影響は大きかったです。<em>建設会社でアートをやっているって、それだけで「この会社は何か面白いことを考えている」って伝わるんですよね。</em></div></div>
-        </div>
-        <div class="talk-answer">
-          <div class="talk-avatar av-asaka">浅加</div>
-          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text">私は_ingの前に入社しているので直接の影響はないんですが、<em>もし今就活していたら、間違いなく_ingを見て「ここに入りたい」って思うと思います。</em>それくらい会社の見え方が変わりました。</div></div>
+          <div class="talk-avatar av-namiwake">浪分</div>
+          <div class="talk-content"><div class="talk-name">浪分 優花</div><div class="talk-text">影響は大きかったです。<em>建設会社でアートをやっているって、それだけで「この会社は何か面白いことを考えている」って伝わるんですよね。</em>常務から話を聞いた時も、_ingの話が一番印象に残りました。</div></div>
         </div>
       </div>
     </div>
@@ -1020,11 +1064,15 @@ body {
       <div class="talk-answers">
         <div class="talk-answer">
           <div class="talk-avatar av-nirei">仁禮</div>
-          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text">現場の仕事は想像以上に体力が必要でした（笑）。でも<em>先輩たちが丁寧に教えてくれるので、毎日少しずつできることが増えていくのが嬉しい。</em>あと、思った以上に社員同士の距離が近い。</div></div>
+          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text">現場の仕事は想像以上に体力が必要でした（笑）。でも<em>先輩たちが丁寧に教えてくれるので、毎日少しずつできることが増えていくのが嬉しい。</em>職人として早く一人前になりたいです。</div></div>
         </div>
         <div class="talk-answer">
-          <div class="talk-avatar av-asaka">浅加</div>
-          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text">_ingが始まってからは、<em>外部の人がオフィスに来ることが本当に増えました。</em>以前は静かだったのに、今は「次はいつ見学の方が来るの？」って日常会話に出るくらい。会社の雰囲気がどんどん外向きになっていくのを感じます。</div></div>
+          <div class="talk-avatar av-ishida">石田</div>
+          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">_ingが始まってからは、<em>外部の人がオフィスに来ることが本当に増えました。</em>入社した時とは会社の雰囲気がガラッと変わった。どんどん外向きになっていくのを中から感じています。</div></div>
+        </div>
+        <div class="talk-answer">
+          <div class="talk-avatar av-namiwake">浪分</div>
+          <div class="talk-content"><div class="talk-name">浪分 優花</div><div class="talk-text">営業で外を回っていると、<em>_ingの話をするとお客様の反応が全然違うんです。</em>「あの建設会社ね！」って言ってもらえる。前職では考えられなかったことですね。</div></div>
         </div>
       </div>
     </div>
@@ -1035,19 +1083,19 @@ body {
       <div class="talk-answers">
         <div class="talk-answer">
           <div class="talk-avatar av-nirei">仁禮</div>
-          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text"><em>「建設会社なのにアートがあるんだよ」って言うと、みんな「え？」ってなります（笑）。</em>そこから話が広がるので、説明しやすい会社だなって思います。</div></div>
+          <div class="talk-content"><div class="talk-name">仁禮 聖知</div><div class="talk-text"><em>「建設会社なのにアートがあるんだよ」って言うと、みんな「え？」ってなります（笑）。</em>金沢市立工業の同級生にも自慢できる会社です。職人としても成長できるし。</div></div>
         </div>
         <div class="talk-answer">
           <div class="talk-avatar av-ishida">石田</div>
-          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">「空間の可能性を本気で考えている会社」ですかね。<em>ただの工事会社じゃない。空間を通じて人や企業の未来を変えようとしている。</em></div></div>
+          <div class="talk-content"><div class="talk-name">石田 丈一郎</div><div class="talk-text">「空間の可能性を本気で考えている会社」ですかね。<em>ただの工事会社じゃない。空間を通じて人や企業の未来を変えようとしている。</em>_ingが始まってから、その思いがさらに強くなりました。</div></div>
         </div>
         <div class="talk-answer">
-          <div class="talk-avatar av-namiwake">波分</div>
-          <div class="talk-content"><div class="talk-name">波分 優花</div><div class="talk-text"><em>「新しいことに挑戦し続けている会社」</em>かな。建設業って保守的なイメージがあると思うんですけど、ここは全然違う。それが外から見ても伝わるようになってきたのが、すごくいいなと思っています。</div></div>
+          <div class="talk-avatar av-namiwake">浪分</div>
+          <div class="talk-content"><div class="talk-name">浪分 優花</div><div class="talk-text"><em>「お客様のために本気で新しいことに挑戦している会社」</em>ですね。建設業って保守的なイメージがあると思うんですけど、ここは全然違う。営業としてお客様に胸を張って紹介できます。</div></div>
         </div>
         <div class="talk-answer">
           <div class="talk-avatar av-asaka">浅加</div>
-          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text"><em>「変わり続ける会社」。</em>_ingが始まってから、本当に毎月のように何か新しいことが起きている。入社した時とは別の会社みたいです（笑）。でもそれが楽しい。</div></div>
+          <div class="talk-content"><div class="talk-name">浅加 望愛</div><div class="talk-text"><em>「テレビで見て入りたいと思える建設会社」</em>って言ったら、友達はびっくりすると思います（笑）。でも本当にそうなんです。_ingがあるからこそ、毎日が刺激的で楽しい。</div></div>
         </div>
       </div>
     </div>
@@ -1074,19 +1122,14 @@ body {
   </div>
   <div class="service-grid">
     <div class="service-card reveal reveal-d1">
-      <div class="service-icon" style="background:rgba(255,51,153,0.1); color:var(--pink);">&#9670;</div>
-      <h3>空間診断</h3>
-      <p>御社のオフィス空間を訪問し、課題とポテンシャルを診断。アートや空間デザインでどう変わるか、具体的にご提案します。</p>
-    </div>
-    <div class="service-card reveal reveal-d2">
       <div class="service-icon" style="background:rgba(0,0,178,0.08); color:var(--navy);">&#9632;</div>
       <h3>アートオフィス<br>プロデュース</h3>
       <p>空間設計からアート選定・施工まで一体で提供。パーティション施工力とアートプロデュースを兼ね備えた、北陸唯一のサービスです。</p>
     </div>
-    <div class="service-card reveal reveal-d3">
-      <div class="service-icon" style="background:rgba(0,204,102,0.1); color:var(--green);">&#9679;</div>
-      <h3>アート定期入替<br>サブスクリプション</h3>
-      <p>四半期ごとにアート作品を入れ替え。空間に常に新鮮なストーリーを。来訪者・社員に新しい刺激を提供し続けます。</p>
+    <div class="service-card reveal reveal-d2" style="border-color:var(--border); background:var(--bg-light);">
+      <div class="service-icon" style="background:rgba(255,51,153,0.1); color:var(--pink);">&#9670;</div>
+      <h3>その他のご相談</h3>
+      <p>空間診断やアートのレンタルなど、新しいサービスも準備中です。<br>「こんなことできる？」など、お気軽にお問い合わせください。</p>
     </div>
   </div>
 </div>
@@ -1101,13 +1144,19 @@ body {
       _ingの成果は、言葉だけでは伝わりません。<br>
       アートのあるオフィス空間を、ぜひ実際にご覧ください。
     </p>
-    <a href="https://ing.wall-it.com/" class="cta-btn" target="_blank" rel="noopener">
-      オフィス見学のお問い合わせ
+    <a href="https://www.wall-it.com/contact/" class="cta-btn" target="_blank" rel="noopener">
+      お気軽に会社に来てみてください
     </a>
     <p style="font-size:12px; color:var(--text3); margin-top:16px;">
-      小松ウォールアイティ株式会社｜石川県金沢市<br>
-      TEL: 076-241-0122
+      小松ウォールアイティ株式会社｜〒921-8062 石川県金沢市新保本2丁目607番地<br>
+      TEL: 076-249-0412
     </p>
+  </div>
+  <div class="reveal" style="max-width:var(--max-w); margin:32px auto 0; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+    <iframe
+      src="https://maps.google.com/maps?q=%E5%B0%8F%E6%9D%BE%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A4%E3%83%86%E3%82%A3+%E9%87%91%E6%B2%A2%E5%B8%82%E6%96%B0%E4%BF%9D%E6%9C%AC2%E4%B8%81%E7%9B%AE607&t=m&z=16&output=embed&hl=ja"
+      width="100%" height="320" style="border:0; display:block;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
 
@@ -1167,6 +1216,106 @@ function countUp(el){
     if(p<1)requestAnimationFrame(step);
   })(start);
 }
+
+// Falling Petals — hero section only
+(function(){
+  var canvas = document.getElementById('petalCanvas');
+  var marks = [
+    'assets/images/petals/mark_pink_navy.png',
+    'assets/images/petals/mark_navy_yellow.png',
+    'assets/images/petals/mark_yellow_green.png',
+    'assets/images/petals/mark_green_pink.png'
+  ];
+  var count = 24;
+  for(var i=0; i<count; i++){
+    var src = marks[i % marks.length];
+    var el = document.createElement('div');
+    el.className = 'petal';
+    var size = 14 + Math.random() * 62;
+    var left = 1 + Math.random() * 98;
+    var dur = 7 + Math.random() * 12;
+    var delay = Math.random() * 22;
+    var sway1 = -60 + Math.random() * 120;
+    var sway2 = -60 + Math.random() * 120;
+    el.style.cssText = 'left:'+left+'%;--petal-size:'+size+'px;--petal-dur:'+dur+'s;--petal-delay:'+delay+'s;--petal-sway:'+sway1+'px;--petal-sway2:'+sway2+'px;';
+    el.innerHTML = '<img src="'+src+'" alt="">';
+    canvas.appendChild(el);
+  }
+})();
+
+// Static background marks — "fallen petals" layout
+// Only on text-based sections (no photos), balanced, never clipped
+(function(){
+  var marks = [
+    'assets/images/petals/mark_pink_navy.png',
+    'assets/images/petals/mark_navy_yellow.png',
+    'assets/images/petals/mark_yellow_green.png',
+    'assets/images/petals/mark_green_pink.png'
+  ];
+  // Sections WITH photos — skip these
+  var photoSections = ['results','process','coupler'];
+  // Sections for static marks (text-only)
+  var sections = document.querySelectorAll('#voices, #service, #contact');
+
+  // Place marks like they've just fallen and landed — scattered but balanced
+  // Use a grid-like approach to avoid overlap and ensure no clipping
+  sections.forEach(function(sec, si){
+    sec.style.position = 'relative';
+    sec.style.overflow = 'visible';
+    var secH = sec.offsetHeight || 600;
+    var secW = sec.offsetWidth || 1200;
+    var count = 5 + (si % 2);
+    // Divide section into rows for balanced distribution
+    var rows = Math.ceil(count / 2);
+    var rowH = 100 / (rows + 1);
+    var placed = 0;
+    for(var r=0; r<rows; r++){
+      var cols = (r === rows-1 && count % 2 === 1) ? 1 : 2;
+      for(var c=0; c<cols; c++){
+        var el = document.createElement('div');
+        el.className = 'bg-mark';
+        var src = marks[(si * 3 + placed) % marks.length];
+        var size = 50 + Math.random() * 100;
+        // Vertical: spread across rows with jitter
+        var top = rowH * (r + 0.5) + (Math.random() - 0.5) * rowH * 0.6;
+        top = Math.max(3, Math.min(top, 92));
+        // Horizontal: left side or right side, with margin to avoid clipping
+        var marginPx = size + 10;
+        var marginPct = (marginPx / secW) * 100;
+        var left;
+        if(c === 0) left = marginPct * 0.3 + Math.random() * 15;
+        else left = 70 + Math.random() * (25 - marginPct * 0.3);
+        if(cols === 1) left = 30 + Math.random() * 40;
+        // Gentle rotation like a fallen petal
+        var rot = -25 + Math.random() * 50;
+        el.style.cssText = 'width:'+size+'px;height:'+size+'px;top:'+top+'%;left:'+left+'%;transform:rotate('+rot+'deg);';
+        el.innerHTML = '<img src="'+src+'" alt="">';
+        sec.appendChild(el);
+        placed++;
+      }
+    }
+  });
+
+  // For the industry context section (between process and voices)
+  var ctx = document.querySelector('.context-box');
+  if(ctx && ctx.parentElement){
+    var ctxSec = ctx.closest('section');
+    if(ctxSec){
+      ctxSec.style.position = 'relative';
+      ctxSec.style.overflow = 'visible';
+      // Add 2 subtle marks to context section
+      for(var j=0; j<2; j++){
+        var el2 = document.createElement('div');
+        el2.className = 'bg-mark';
+        var src2 = marks[j + 1];
+        var sz = 60 + Math.random() * 80;
+        el2.style.cssText = 'width:'+sz+'px;height:'+sz+'px;top:'+(20+j*50)+'%;left:'+(j===0?5:80)+'%;transform:rotate('+(Math.random()*40-20)+'deg);';
+        el2.innerHTML = '<img src="'+src2+'" alt="">';
+        ctxSec.appendChild(el2);
+      }
+    }
+  }
+})();
 </script>
 
 </body>
