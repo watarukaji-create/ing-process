@@ -278,7 +278,7 @@ body {
 }
 .coupler-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(26,26,46,0.92) 0%, rgba(26,26,46,0.7) 40%, rgba(26,26,46,0.3) 100%);
+  background: linear-gradient(to top, rgba(26,26,46,0.95) 0%, rgba(26,26,46,0.85) 50%, rgba(26,26,46,0.5) 100%);
   display: flex; align-items: flex-end;
   padding: 48px 32px;
 }
@@ -302,6 +302,7 @@ body {
   line-height: 2;
   max-width: 640px;
   font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 /* --- KPI --- */
@@ -454,6 +455,48 @@ body {
   background: linear-gradient(135deg, var(--pink), var(--navy));
   display: flex; align-items: center; justify-content: center;
   color: var(--white); font-size: 24px; font-weight: 700;
+}
+
+/* --- Exhibition Archive Gallery --- */
+.archive-gallery {
+  margin-top: 24px;
+}
+.archive-gallery h4 {
+  font-size: 13px; font-weight: 700; color: var(--text2);
+  margin-bottom: 12px; letter-spacing: 0.5px;
+}
+.archive-thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.archive-thumbs img {
+  width: 100%; aspect-ratio: 4/3;
+  object-fit: cover; border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.archive-thumbs img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.9);
+  display: none; align-items: center; justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-overlay img {
+  max-width: 90vw; max-height: 90vh;
+  border-radius: 8px; object-fit: contain;
+}
+.lightbox-close {
+  position: absolute; top: 20px; right: 28px;
+  color: #fff; font-size: 32px; cursor: pointer;
+  font-family: var(--font-en); font-weight: 300;
+  line-height: 1;
 }
 
 /* --- Roundtable --- */
@@ -633,6 +676,7 @@ body {
   .rt-intro { grid-template-columns: 1fr; }
   .section { padding: 60px 20px; }
   .artist-card { flex-direction: column; text-align: center; }
+  .archive-thumbs { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
   .hero-logo { width: 220px; }
@@ -754,8 +798,8 @@ body {
   <div class="exhibit-grid">
     <div class="exhibit-card reveal reveal-d1">
       <div style="position:relative;">
-        <img src="assets/images/iwai_exhibition.jpg" alt="Vol.1 岩井美佳展">
-        <span class="photo-credit">Photo: yuji oku</span>
+        <img src="assets/images/vol1_gallery_wide.jpg" alt="Vol.1 岩井美佳展 — 会場全景">
+        <span class="photo-credit">Photo: Yuji Oku</span>
       </div>
       <div class="exhibit-card-body">
         <div class="vol">Exhibition Vol.1</div>
@@ -765,10 +809,20 @@ body {
           来場者150名超、メディア掲載43件。
           _ingの存在を社会に示した記念碑的展示。
         </p>
+        <div class="archive-gallery">
+          <h4>Archive</h4>
+          <div class="archive-thumbs">
+            <img src="assets/images/vol1_artwork_detail.jpg" alt="Vol.1 作品ディテール" loading="lazy">
+            <img src="assets/images/vol1_textile_detail.jpg" alt="Vol.1 テキスタイル素材" loading="lazy">
+            <img src="assets/images/office_entrance.jpg" alt="_ingオフィス エントランス" loading="lazy">
+          </div>
+        </div>
       </div>
     </div>
     <div class="exhibit-card reveal reveal-d2">
-      <img src="assets/images/sakurai_artwork.jpeg" alt="Vol.2 桜井旭展">
+      <div style="position:relative;">
+        <img src="assets/images/vol2_gallery_wide.jpg" alt="Vol.2 桜井旭展 — 会場全景">
+      </div>
       <div class="exhibit-card-body">
         <div class="vol">Exhibition Vol.2</div>
         <h3>桜井 旭（洋画家）</h3>
@@ -777,6 +831,14 @@ body {
           アクリル・油彩の大作を展示。空間と絵画が共鳴する体験を提供。
           来場者600名超、メディア掲載77件。
         </p>
+        <div class="archive-gallery">
+          <h4>Archive</h4>
+          <div class="archive-thumbs">
+            <img src="assets/images/vol2_lounge_art.jpg" alt="Vol.2 アート×ラウンジ" loading="lazy">
+            <img src="assets/images/vol2_reception.jpg" alt="Vol.2 レセプション" loading="lazy">
+            <img src="assets/images/sakurai_forest.jpg" alt="桜井旭 屋外インスタレーション" loading="lazy">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1315,6 +1377,27 @@ function countUp(el){
       }
     }
   }
+})();
+
+// Lightbox for archive gallery
+(function(){
+  var overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.innerHTML = '<span class="lightbox-close">&times;</span><img src="" alt="">';
+  document.body.appendChild(overlay);
+  var lbImg = overlay.querySelector('img');
+  var close = overlay.querySelector('.lightbox-close');
+
+  document.querySelectorAll('.archive-thumbs img').forEach(function(img){
+    img.addEventListener('click', function(){
+      lbImg.src = this.src;
+      lbImg.alt = this.alt;
+      overlay.classList.add('active');
+    });
+  });
+  overlay.addEventListener('click', function(){ overlay.classList.remove('active'); });
+  close.addEventListener('click', function(){ overlay.classList.remove('active'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') overlay.classList.remove('active'); });
 })();
 </script>
 
