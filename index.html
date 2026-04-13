@@ -274,11 +274,11 @@ body {
 .coupler-hero-img {
   width: 100%;
   display: block;
-  opacity: 0.9;
+  opacity: 0.5;
 }
 .coupler-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(10,10,30,0.97) 0%, rgba(10,10,30,0.92) 60%, rgba(10,10,30,0.7) 100%);
+  background: rgba(10,10,30,0.75);
   display: flex; align-items: flex-end;
   padding: 48px 32px;
 }
@@ -295,6 +295,7 @@ body {
   line-height: 1.3;
   color: var(--white);
   margin-bottom: 12px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9);
 }
 .coupler-hero-text p {
   font-size: 16px;
@@ -797,9 +798,9 @@ body {
 
   <div class="exhibit-grid">
     <div class="exhibit-card reveal reveal-d1">
-      <div style="position:relative;">
+      <div style="position:relative; overflow:hidden;">
         <img src="assets/images/vol1_gallery_wide.jpg" alt="Vol.1 岩井美佳展 — 会場全景">
-        <span class="photo-credit">Photo: Yuji Oku</span>
+        <span style="position:absolute; bottom:8px; right:10px; font-family:var(--font-en); font-size:10px; letter-spacing:0.5px; color:rgba(255,255,255,0.95); background:rgba(0,0,0,0.65); padding:3px 10px; border-radius:4px; z-index:5;">Photo: Yuji Oku</span>
       </div>
       <div class="exhibit-card-body">
         <div class="vol">Exhibition Vol.1</div>
