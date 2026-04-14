@@ -682,8 +682,8 @@ body {
 }
 @media (max-width: 768px) {
   .petal-canvas {
-    -webkit-mask-image: radial-gradient(ellipse 160px 200px at 50% 40%, transparent 0%, transparent 50%, black 85%);
-    mask-image: radial-gradient(ellipse 160px 200px at 50% 40%, transparent 0%, transparent 50%, black 85%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 45%, transparent 0%, transparent 70%, black 100%);
+    mask-image: radial-gradient(ellipse 70% 55% at 50% 45%, transparent 0%, transparent 70%, black 100%);
   }
   .hero-logo { width: 200px; }
 }
@@ -692,8 +692,8 @@ body {
   .hero h1 { font-size: 22px; }
   .kpi-number { font-size: 36px; }
   .petal-canvas {
-    -webkit-mask-image: radial-gradient(ellipse 120px 150px at 50% 35%, transparent 0%, transparent 40%, black 80%);
-    mask-image: radial-gradient(ellipse 120px 150px at 50% 35%, transparent 0%, transparent 40%, black 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 45%, transparent 0%, transparent 75%, black 100%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 45%, transparent 0%, transparent 75%, black 100%);
   }
 }
 </style>
@@ -1304,7 +1304,10 @@ function countUp(el){
     'assets/images/petals/mark_yellow_green.png',
     'assets/images/petals/mark_green_pink.png'
   ];
-  var count = 24;
+  var isMobile = window.matchMedia('(max-width: 768px)').matches;
+  var count = isMobile ? 10 : 24;
+  // Buildup: start sparse (drizzle) and ramp to full bloom over ~6s
+  var buildup = 6;
   for(var i=0; i<count; i++){
     var src = marks[i % marks.length];
     var el = document.createElement('div');
@@ -1312,8 +1315,9 @@ function countUp(el){
     var size = 14 + Math.random() * 62;
     var left = 1 + Math.random() * 98;
     var dur = 7 + Math.random() * 12;
-    // Negative delay: start each petal mid-cycle so the sky is full from t=0
-    var delay = -Math.random() * dur;
+    // Positive staggered delay — biased toward later so it starts as light rain and fills in
+    var r = Math.random();
+    var delay = Math.pow(r, 0.6) * buildup;
     var sway1 = -60 + Math.random() * 120;
     var sway2 = -60 + Math.random() * 120;
     el.style.cssText = 'left:'+left+'%;--petal-size:'+size+'px;--petal-dur:'+dur+'s;--petal-delay:'+delay+'s;--petal-sway:'+sway1+'px;--petal-sway2:'+sway2+'px;';
