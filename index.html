@@ -682,8 +682,8 @@ body {
 }
 @media (max-width: 768px) {
   .petal-canvas {
-    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 45%, transparent 0%, transparent 70%, black 100%);
-    mask-image: radial-gradient(ellipse 70% 55% at 50% 45%, transparent 0%, transparent 70%, black 100%);
+    -webkit-mask-image: radial-gradient(ellipse 55% 42% at 50% 45%, transparent 0%, transparent 40%, black 95%);
+    mask-image: radial-gradient(ellipse 55% 42% at 50% 45%, transparent 0%, transparent 40%, black 95%);
   }
   .hero-logo { width: 200px; }
 }
@@ -692,8 +692,8 @@ body {
   .hero h1 { font-size: 22px; }
   .kpi-number { font-size: 36px; }
   .petal-canvas {
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 45%, transparent 0%, transparent 75%, black 100%);
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 45%, transparent 0%, transparent 75%, black 100%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 45% at 50% 45%, transparent 0%, transparent 45%, black 95%);
+    mask-image: radial-gradient(ellipse 60% 45% at 50% 45%, transparent 0%, transparent 45%, black 95%);
   }
 }
 </style>
@@ -1305,7 +1305,7 @@ function countUp(el){
     'assets/images/petals/mark_green_pink.png'
   ];
   var isMobile = window.matchMedia('(max-width: 768px)').matches;
-  var count = isMobile ? 10 : 24;
+  var count = isMobile ? 16 : 24;
   // Buildup: start sparse (drizzle) and ramp to full bloom over ~6s
   var buildup = 6;
   for(var i=0; i<count; i++){
