@@ -389,7 +389,7 @@ body {
   color: var(--pink); letter-spacing: 1px;
 }
 .tl-item:nth-child(2) .tl-period { color: var(--green); }
-.tl-item:nth-child(3) .tl-period { color: #ccaa00; }
+.tl-item:nth-child(3) .tl-period { color: var(--yellow); }
 .tl-item:nth-child(4) .tl-period { color: var(--navy); }
 .tl-title { font-size: 18px; font-weight: 700; margin: 6px 0 8px; }
 .tl-desc { font-size: 14px; color: var(--text2); line-height: 1.9; }
@@ -510,7 +510,7 @@ body {
 .rt-photo-placeholder {
   border-radius: 16px;
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #fce4ec, #e8eaf6);
+  background: linear-gradient(135deg, rgba(255,51,153,0.12), rgba(0,0,178,0.08));
   display: flex; align-items: center; justify-content: center;
   color: var(--text3); font-size: 12px;
 }
@@ -532,7 +532,7 @@ body {
 .av-ishida   { background: var(--navy); }
 .av-asaka    { background: var(--green); }
 .av-nirei    { background: var(--pink); }
-.av-namiwake { background: #9c6644; }
+.av-namiwake { background: var(--yellow); color: var(--navy); }
 .rt-member-name { font-size: 14px; font-weight: 700; }
 .rt-member-role { font-size: 11px; color: var(--text3); }
 
@@ -547,7 +547,7 @@ body {
 }
 .talk-question span {
   font-family: var(--font-en);
-  color: var(--yellow); font-size: 11px; display: block;
+  color: var(--pink); font-size: 11px; display: block;
   margin-bottom: 2px; letter-spacing: 2px; font-weight: 700;
 }
 .talk-answers {
@@ -567,6 +567,7 @@ body {
   color: var(--white); font-size: 10px; font-weight: 700;
   flex-shrink: 0; margin-top: 2px;
 }
+.talk-avatar.av-namiwake, .rt-avatar.av-namiwake { color: var(--navy); }
 .talk-name { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
 .talk-text { font-size: 14px; color: var(--text2); line-height: 1.9; }
 .talk-text em {
@@ -1311,7 +1312,8 @@ function countUp(el){
     var size = 14 + Math.random() * 62;
     var left = 1 + Math.random() * 98;
     var dur = 7 + Math.random() * 12;
-    var delay = Math.random() * 22;
+    // Negative delay: start each petal mid-cycle so the sky is full from t=0
+    var delay = -Math.random() * dur;
     var sway1 = -60 + Math.random() * 120;
     var sway2 = -60 + Math.random() * 120;
     el.style.cssText = 'left:'+left+'%;--petal-size:'+size+'px;--petal-dur:'+dur+'s;--petal-delay:'+delay+'s;--petal-sway:'+sway1+'px;--petal-sway2:'+sway2+'px;';
