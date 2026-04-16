@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>_ing PROCESS — 採用ゼロから「選ばれる企業」へ | 小松ウォールアイティ</title>
-<meta name="description" content="採用ゼロだった従業員33名の金沢の建具工事会社が、空間×アートで若手3名採用・来訪者10倍を実現するまでの全プロセスを公開。">
-<meta property="og:title" content="_ing PROCESS — 採用ゼロから「選ばれる企業」へ">
-<meta property="og:description" content="採用ゼロだった地方の建設会社が、空間×アートで「選ばれる企業」に変わるまでの実証事例。">
+<title>_ing PROCESS — 空間に新しいストーリーを | 小松ウォールアイティ</title>
+<meta name="description" content="従業員33名の金沢の建具工事会社が、アート×空間×組織開発に本気で取り組んだ成果とプロセスの記録。">
+<meta property="og:title" content="_ing PROCESS — 空間に新しいストーリーを">
+<meta property="og:description" content="アートの力で空間を変え、企業の魅力を高め、人が集まる場所をつくる。_ingの成果とプロセスを公開します。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://watarukaji-create.github.io/ing-process/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
-   _ing PROCESS — v2.0 構成刷新版
-   「採用・集客に悩む企業のための実証事例サイト」
+   _ing PROCESS — LP世界観準拠 v3.0
    カラー: ピンク / ネイビー / グリーン / イエロー
+   白背景 + カラフルブロブ装飾
    ============================================ */
 
 :root {
@@ -126,32 +126,11 @@ body {
   max-width: 720px; padding: 140px 24px 80px;
 }
 .hero-logo {
-  width: 320px; margin: 0 auto 24px;
-  display: block;
+  width: 340px; margin: 0 auto 32px;
   opacity: 0; animation: fade-up 0.8s 0.3s forwards;
 }
-.hero-sub-concept {
-  font-family: var(--font-body);
-  font-size: clamp(13px, 2.2vw, 16px);
-  color: var(--text2);
-  letter-spacing: 0.15em;
-  margin-bottom: 20px;
-  opacity: 0; animation: fade-up 0.8s 0.45s forwards;
-}
-.hero-tag {
-  display: inline-block;
-  background: var(--navy);
-  color: var(--white);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 5px 18px;
-  border-radius: 20px;
-  margin-bottom: 16px;
-  opacity: 0; animation: fade-up 0.8s 0.55s forwards;
-}
 .hero h1 {
-  font-size: clamp(22px, 3.8vw, 34px);
+  font-size: clamp(26px, 4.5vw, 42px);
   font-weight: 700;
   line-height: 1.6;
   letter-spacing: 0.05em;
@@ -169,7 +148,7 @@ body {
 }
 .hero-cta {
   display: inline-block;
-  background: var(--pink);
+  background: var(--navy);
   color: var(--white);
   padding: 16px 44px;
   border-radius: 40px;
@@ -180,7 +159,7 @@ body {
   transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
   opacity: 0; animation: fade-up 0.8s 1.2s forwards;
 }
-.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,51,153,0.25); }
+.hero-cta:hover { background: var(--pink); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,51,153,0.25); }
 
 .hero-scroll {
   position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
@@ -278,58 +257,53 @@ body {
   margin-bottom: 40px;
 }
 
-/* --- Challenge Section --- */
-.challenge-section {
-  background: var(--bg-light);
-  padding: 80px 24px;
+/* --- Blob divider (decorative) --- */
+.blob-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
 }
-.challenge-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+
+/* --- COUPLER Feature (Full-width) --- */
+.coupler-hero {
+  position: relative;
+  background: var(--text1);
+  overflow: hidden;
+}
+.coupler-hero-img {
+  width: 100%;
+  display: block;
+  opacity: 0.5;
+}
+.coupler-hero-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,10,30,0.75);
+  display: flex; align-items: flex-end;
+  padding: 48px 32px;
+}
+.coupler-hero-text {
   max-width: var(--max-w);
-  margin: 40px auto 0;
-}
-.challenge-card {
-  background: var(--white);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 28px;
-  transition: border-color 0.3s, transform 0.3s;
-}
-.challenge-card:hover { border-color: var(--pink); transform: translateY(-4px); }
-.challenge-icon {
-  font-size: 28px;
-  margin-bottom: 12px;
-}
-.challenge-card h3 {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--text1);
-}
-.challenge-card p {
-  font-size: 13px;
-  color: var(--text2);
-  line-height: 1.9;
-}
-.challenge-answer {
-  max-width: var(--max-w);
-  margin: 32px auto 0;
-  text-align: center;
-  padding: 28px;
-  background: var(--navy);
-  border-radius: 16px;
+  margin: 0 auto;
   color: var(--white);
+  width: 100%;
 }
-.challenge-answer p {
-  font-size: 16px;
-  line-height: 2;
-  font-weight: 500;
-}
-.challenge-answer strong {
-  color: var(--yellow);
+.coupler-hero-text .section-label { color: var(--yellow); }
+.coupler-hero-text h2 {
+  font-size: clamp(28px, 5vw, 48px);
   font-weight: 700;
+  line-height: 1.3;
+  color: var(--white);
+  margin-bottom: 12px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+}
+.coupler-hero-text p {
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 2;
+  max-width: 640px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
 /* --- KPI --- */
@@ -359,17 +333,12 @@ body {
 .kpi-label { font-size: 13px; color: var(--text2); margin-top: 8px; }
 
 /* --- Before/After --- */
-.ba-section {
-  background: var(--bg-light);
-  padding: 80px 24px;
-}
 .ba-grid {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: 16px;
   align-items: center;
-  margin: 40px auto;
-  max-width: var(--max-w);
+  margin: 40px 0;
 }
 .ba-card {
   background: var(--white);
@@ -380,38 +349,6 @@ body {
 .ba-card.before { border: 2px solid var(--border); }
 .ba-card.after { border: 2px solid var(--pink); background: #fff5f9; }
 .ba-arrow { font-size: 28px; color: var(--pink); text-align: center; }
-
-.ba-detail-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  max-width: var(--max-w);
-  margin: 32px auto 0;
-}
-.ba-detail-item {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 24px;
-  border: 1px solid var(--border);
-}
-.ba-detail-item .label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--text3);
-  margin-bottom: 8px;
-}
-.ba-detail-item .before-val {
-  font-size: 14px;
-  color: var(--text3);
-  margin-bottom: 6px;
-  text-decoration: line-through;
-}
-.ba-detail-item .after-val {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--navy);
-}
 
 /* --- Photo grid --- */
 .photo-grid {
@@ -456,70 +393,12 @@ body {
 .tl-item:nth-child(4) .tl-period { color: var(--navy); }
 .tl-title { font-size: 18px; font-weight: 700; margin: 6px 0 8px; }
 .tl-desc { font-size: 14px; color: var(--text2); line-height: 1.9; }
-.tl-result {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 4px 14px;
-  background: rgba(255,51,153,0.08);
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--pink);
-}
-.tl-item:nth-child(2) .tl-result { background: rgba(0,197,83,0.08); color: var(--green); }
-.tl-item:nth-child(3) .tl-result { background: rgba(255,235,0,0.15); color: #b8a000; }
-.tl-item:nth-child(4) .tl-result { background: rgba(0,0,178,0.08); color: var(--navy); }
 .tl-photo {
   margin-top: 12px;
   border-radius: 12px;
   overflow: hidden;
 }
 .tl-photo img { width: 100%; display: block; }
-
-/* --- Story Section --- */
-.story-section {
-  background: var(--text1);
-  color: var(--white);
-  padding: 80px 24px;
-  position: relative;
-  overflow: hidden;
-}
-.story-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.story-section .section-label { color: var(--yellow); }
-.story-section h2 { color: var(--white); }
-.story-section .section-lead { color: rgba(255,255,255,0.7); }
-.story-block {
-  margin-bottom: 36px;
-  padding-left: 20px;
-  border-left: 3px solid var(--pink);
-}
-.story-block h3 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--yellow);
-  margin-bottom: 8px;
-}
-.story-block p {
-  font-size: 14px;
-  color: rgba(255,255,255,0.85);
-  line-height: 2;
-}
-.story-highlight {
-  background: rgba(255,51,153,0.15);
-  border-radius: 12px;
-  padding: 28px;
-  margin-top: 32px;
-}
-.story-highlight p {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--yellow);
-  line-height: 1.8;
-  text-align: center;
-}
 
 /* --- Exhibition Cards --- */
 .exhibit-grid {
@@ -571,6 +450,12 @@ body {
   width: 100px; height: 100px; border-radius: 50%;
   object-fit: cover; flex-shrink: 0;
   border: 3px solid var(--pink);
+}
+.artist-avatar-placeholder {
+  width: 100px; height: 100px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--pink), var(--navy));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-size: 24px; font-weight: 700;
 }
 
 /* --- Exhibition Archive Gallery --- */
@@ -690,6 +575,15 @@ body {
   background: linear-gradient(transparent 60%, rgba(255,51,153,0.15) 60%);
 }
 
+/* --- Industry Context --- */
+.context-box {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 16px;
+  padding: 36px;
+  margin-top: 24px;
+}
+
 /* --- Service --- */
 .service-section {
   background: var(--bg-light);
@@ -723,24 +617,17 @@ body {
 /* --- CTA --- */
 .cta-section {
   text-align: center;
-  padding: 80px 24px;
-  max-width: 720px;
+  padding: 60px 32px;
+  max-width: 640px;
   margin: 0 auto;
 }
 .cta-section h2 { margin-bottom: 12px; }
 .cta-section p { color: var(--text2); margin-bottom: 28px; }
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
 .cta-btn {
   display: inline-block;
   background: var(--pink);
   color: var(--white);
-  padding: 18px 40px;
+  padding: 18px 48px;
   border-radius: 40px;
   text-decoration: none;
   font-size: 15px;
@@ -749,33 +636,6 @@ body {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,51,153,0.3); }
-.cta-btn-secondary {
-  display: inline-block;
-  background: var(--white);
-  color: var(--navy);
-  padding: 18px 40px;
-  border-radius: 40px;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  border: 2px solid var(--navy);
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
-}
-.cta-btn-secondary:hover { transform: translateY(-2px); background: var(--navy); color: var(--white); }
-
-/* --- Photo Credit --- */
-.photo-credit {
-  position: absolute;
-  bottom: 8px; right: 10px;
-  font-family: var(--font-en);
-  font-size: 10px;
-  letter-spacing: 0.5px;
-  color: rgba(255,255,255,0.9);
-  background: rgba(0,0,0,0.55);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
 
 /* --- Footer --- */
 .footer {
@@ -791,6 +651,19 @@ body {
 .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 12px; font-size: 12px; transition: color 0.3s; }
 .footer-links a:hover { color: var(--pink); }
 
+/* --- Photo Credit --- */
+.photo-credit {
+  position: absolute;
+  bottom: 8px; right: 10px;
+  font-family: var(--font-en);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.55);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -800,15 +673,12 @@ body {
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .ba-grid { grid-template-columns: 1fr; }
   .ba-arrow { transform: rotate(90deg); }
-  .ba-detail-grid { grid-template-columns: 1fr; }
-  .challenge-grid { grid-template-columns: 1fr; }
   .exhibit-grid { grid-template-columns: 1fr; }
   .coupler-detail { grid-template-columns: 1fr; }
   .rt-intro { grid-template-columns: 1fr; }
   .section { padding: 60px 20px; }
   .artist-card { flex-direction: column; text-align: center; }
   .archive-thumbs { grid-template-columns: repeat(2, 1fr); }
-  .cta-buttons { flex-direction: column; align-items: center; }
 }
 @media (max-width: 768px) {
   .petal-canvas {
@@ -842,31 +712,29 @@ body {
     <img src="assets/images/ing_logo.webp" alt="_ing" style="height:36px;">
   </div>
   <div class="nav-links">
+    <a href="#coupler">Coupler</a>
     <a href="#results">Results</a>
     <a href="#process">Process</a>
     <a href="#voices">Voices</a>
-    <a href="#service">Service</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- ============================== -->
-<!-- ① HERO — 「採用・集客に悩む企業のための実例」 -->
+<!-- HERO -->
 <!-- ============================== -->
 <section class="hero">
   <div class="petal-canvas" id="petalCanvas"></div>
   <div class="hero-content">
     <img class="hero-logo" src="assets/images/kv_cropped.png" alt="_ing キービジュアル">
-    <p class="hero-sub-concept">空間に新しいストーリーを。</p>
-    <div class="hero-tag">採用・集客に悩む企業のための実証事例</div>
-    <h1>採用ゼロだった私たちが、<br><span class="hl-pink">「選ばれる企業」</span>に<br>変わるまでの記録</h1>
+    <p style="font-family:var(--font-body); font-size:clamp(14px, 2.5vw, 18px); color:var(--text2); letter-spacing:0.15em; margin-bottom:12px; opacity:0; animation:fade-up 0.8s 0.45s forwards;">空間に新しいストーリーを。</p>
+    <h1>空間が変われば、人が集まる。<br>人が集まれば、<span class="hl-pink">未来が動き出す。</span></h1>
     <p class="hero-sub">
       従業員33名の金沢の建具工事会社が、<br>
-      空間 &times; アートのブランディングで<br>
-      <strong>若手3名の採用と来訪者10倍</strong>を実現した<br>
-      成果とプロセスのすべてを公開します。
+      アート &times; 空間デザインに本気で取り組んだ<br>
+      <strong>成果とプロセス</strong>のすべてを公開します。
     </p>
-    <a href="#results" class="hero-cta">成果を見る</a>
+    <a href="#coupler" class="hero-cta">COUPLER を見る</a>
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -875,225 +743,236 @@ body {
 </section>
 
 <!-- ============================== -->
-<!-- ② 課題提示 — 訪問者の課題に共感 -->
+<!-- COUPLER — メインフィーチャー -->
 <!-- ============================== -->
-<div class="challenge-section" id="challenge">
-  <div style="max-width:var(--max-w); margin:0 auto;">
-    <div class="reveal">
-      <div class="section-label">Challenge</div>
-      <h2 style="font-size:clamp(22px, 3.5vw, 32px); font-weight:700; line-height:1.5; margin-bottom:16px;">こんな課題、抱えていませんか？</h2>
-      <p class="section-lead">
-        建設・製造業を中心に、多くの中小企業が同じ壁にぶつかっています。<br>
-        私たちも、まさにこの状態からスタートしました。
-      </p>
-    </div>
+<div id="coupler">
+  <div style="background:#0a0a1e; text-align:center;">
+    <img src="assets/images/coupler_sashie.jpeg" alt="COUPLER — 指江昌克によるシャッターアート" style="width:100%; max-height:70vh; object-fit:contain; display:block; margin:0 auto;">
   </div>
-
-  <div class="challenge-grid">
-    <div class="challenge-card reveal reveal-d1">
-      <div class="challenge-icon">&#128100;</div>
-      <h3>求人を出しても、若手が来ない</h3>
-      <p>
-        ハローワークに出しても応募ゼロ。合同説明会に行っても素通り。<br>
-        「この業界は若い人に選ばれない」と諦めかけていませんか？
+  <div style="background:#0a0a1e; padding:40px 32px 48px;">
+    <div style="max-width:var(--max-w); margin:0 auto;">
+      <div class="section-label" style="color:var(--yellow);">Shutter Art — Exhibition Vol.3</div>
+      <h2 style="font-size:clamp(28px,5vw,48px); font-weight:700; line-height:1.3; color:#fff; margin-bottom:12px;">COUPLER</h2>
+      <p style="font-size:16px; color:#fff; line-height:2; max-width:640px; font-weight:600;">
+        金沢美術工芸大学出身、国際的に活躍する美術家・指江昌克氏によるシャッターアート。<br>
+        建具工事会社のシャッターを「分ける」ものから「つなぐ」ものへ — <br>
+        閉じたシャッターが、24時間365日、街と企業をつなぐメディアになる。<br>
+        _ingの象徴的プロジェクトです。
       </p>
     </div>
-    <div class="challenge-card reveal reveal-d2">
-      <div class="challenge-icon">&#128065;</div>
-      <h3>会社の存在が知られていない</h3>
-      <p>
-        地元でも「何をしている会社？」と聞かれる。<br>
-        メディアに取り上げられることもなく、認知がなかなか広がらない。
-      </p>
-    </div>
-    <div class="challenge-card reveal reveal-d3">
-      <div class="challenge-icon">&#127970;</div>
-      <h3>オフィスや社屋に魅力がない</h3>
-      <p>
-        採用候補者が見学に来ても、「普通の会社」で終わってしまう。<br>
-        空間が企業の魅力を伝えられていない。
-      </p>
-    </div>
-    <div class="challenge-card reveal reveal-d4">
-      <div class="challenge-icon">&#128172;</div>
-      <h3>ブランディングの仕方がわからない</h3>
-      <p>
-        「何か変えなきゃ」とは思うけれど、どこから手をつければいいかわからない。<br>
-        大企業のような予算もリソースもない。
-      </p>
-    </div>
-  </div>
-
-  <div class="challenge-answer reveal">
-    <p>
-      私たちも全く同じ状況でした。<br>
-      そこから<strong>「空間 × アート」のブランディング</strong>で、<br>
-      10ヶ月で目に見える変化を起こしました。
-    </p>
   </div>
 </div>
 
-<!-- ============================== -->
-<!-- ③ RESULTS — 数字で見せる成果 -->
-<!-- ============================== -->
-<section class="section" id="results">
-  <div class="reveal">
-    <div class="section-label">Results</div>
-    <h2>10ヶ月で、実際に何が起きたのか</h2>
-    <p class="section-lead">
-      「アートなんかで本当に変わるの？」<br>
-      私たちも最初は半信半疑でした。でも、数字が答えを出してくれました。
-    </p>
-  </div>
-
-  <div class="kpi-grid">
-    <div class="kpi-card reveal reveal-d1">
-      <div class="kpi-number"><span class="count-up" data-target="3">0</span><span class="kpi-unit">名</span></div>
-      <div class="kpi-label">20代前半の若手が自ら入社<br><small style="color:var(--text3);">18歳職人・23歳経理・22歳建築士</small></div>
-    </div>
-    <div class="kpi-card reveal reveal-d2">
-      <div class="kpi-number"><span class="count-up" data-target="10">0</span><span class="kpi-unit">倍</span></div>
-      <div class="kpi-label">年間来訪者数の増加<br><small style="color:var(--text3);">50名 → 500名超</small></div>
-    </div>
-    <div class="kpi-card reveal reveal-d3">
-      <div class="kpi-number"><span class="count-up" data-target="77">0</span><span class="kpi-unit">件</span></div>
-      <div class="kpi-label">メディア掲載<br><small style="color:var(--text3);">テレビ・新聞含む</small></div>
-    </div>
-    <div class="kpi-card reveal reveal-d4">
-      <div class="kpi-number"><span class="count-up" data-target="600">0</span><span class="kpi-unit">名超</span></div>
-      <div class="kpi-label">展覧会来場者<br><small style="color:var(--text3);">岩井美佳展・桜井旭展 計2回</small></div>
+<section class="section">
+  <div class="coupler-detail reveal">
+    <img src="assets/images/coupler_making.jpg" alt="COUPLER 制作中">
+    <div class="coupler-detail-text">
+      <h3>「分ける」から「つなぐ」へ</h3>
+      <p>
+        金沢を拠点に国際的に活躍する美術家・指江昌克氏が、
+        小松ウォールアイティのシャッターに描いた作品「COUPLER」。<br><br>
+        巨大な球体構造物を描くSF的・ディストピア的世界観が特徴の指江氏が、
+        都市に溢れるモチーフを再構成し、閉じたシャッターの上で
+        街と企業の物語を紡ぎます。<br><br>
+        <strong style="color:var(--navy);">Exhibition Vol.3として、2026年10月〜11月の開幕を予定。</strong>
+      </p>
     </div>
   </div>
 
-  <div class="photo-grid photo-grid-3 reveal" style="margin-top:32px;">
-    <div style="position:relative;">
-      <img src="assets/images/office_art.jpg" alt="オフィス空間のアート（岩井美佳作品）">
-      <span style="position:absolute; bottom:8px; right:10px; font-family:var(--font-en); font-size:10px; letter-spacing:0.5px; color:rgba(255,255,255,0.95); background:rgba(0,0,0,0.65); padding:3px 10px; border-radius:4px; z-index:5;">Photo: Yuji Oku</span>
-    </div>
-    <div class="photo-sub">
-      <img src="assets/images/sakurai_paintings.jpeg" alt="桜井旭展 展示風景">
-      <img src="assets/images/staff_coupler.jpg" alt="菊谷達史 エントランス壁画の前で">
+  <!-- Artist profile -->
+  <div class="artist-card reveal">
+    <img src="assets/images/sashie_portrait.jpg" alt="指江昌克" style="width:100px;height:100px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--pink);">
+    <div>
+      <p style="font-size:16px; font-weight:700; margin-bottom:4px;">
+        指江 昌克
+        <span style="font-family:var(--font-en); font-size:12px; color:var(--text3); font-weight:400; margin-left:8px;">Masakatsu Sashie</span>
+      </p>
+      <p style="font-size:13px; color:var(--text2); line-height:1.8;">
+        金沢美術工芸大学出身、金沢を拠点に国際的に活躍する画家。
+        巨大な球体構造物を描くSF的・ディストピア的世界観が代名詞。
+        ネオンサイン、錆びたトタン、室外機、自動販売機など都市に溢れるモチーフを再構成し、
+        日本国内のみならず世界各地のギャラリーで作品を発表。
+      </p>
     </div>
   </div>
 </section>
 
 <!-- ============================== -->
-<!-- ④ BEFORE / AFTER — 導入前後の変化 -->
+<!-- EXHIBITIONS — 桜井展 & 岩井展 -->
 <!-- ============================== -->
-<div class="ba-section" id="before-after">
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <div class="section-label">Exhibitions</div>
+    <h2>_ing が開催した展覧会</h2>
+    <p class="section-lead">
+      オフィス空間をギャラリーに変え、アーティストの作品を展示。<br>
+      2回の展覧会で延べ600名超が来場、メディア掲載77件を記録しました。
+    </p>
+  </div>
+
+  <div class="exhibit-grid">
+    <div class="exhibit-card reveal reveal-d1">
+      <div style="position:relative; overflow:hidden;">
+        <img src="assets/images/vol1_gallery_wide.jpg" alt="Vol.1 岩井美佳展 — 会場全景">
+        <span style="position:absolute; bottom:8px; right:10px; font-family:var(--font-en); font-size:10px; letter-spacing:0.5px; color:rgba(255,255,255,0.95); background:rgba(0,0,0,0.65); padding:3px 10px; border-radius:4px; z-index:5;">Photo: Yuji Oku</span>
+      </div>
+      <div class="exhibit-card-body">
+        <div class="vol">Exhibition Vol.1</div>
+        <h3>岩井 美佳（染色家）</h3>
+        <p>
+          10mの壁面に染色テキスタイルアートを展開。
+          来場者150名超、メディア掲載43件。
+          _ingの存在を社会に示した記念碑的展示。
+        </p>
+        <div class="archive-gallery">
+          <h4>Archive</h4>
+          <div class="archive-thumbs">
+            <img src="assets/images/vol1_artwork_detail.jpg" alt="Vol.1 作品ディテール — Photo: Yuji Oku" loading="lazy">
+            <img src="assets/images/vol1_textile_detail.jpg" alt="Vol.1 テキスタイル素材 — Photo: Yuji Oku" loading="lazy">
+            <img src="assets/images/office_entrance.jpg" alt="_ingオフィス エントランス" loading="lazy">
+          </div>
+          <p style="font-size:10px; color:var(--text3); text-align:right; margin-top:4px; font-family:var(--font-en);">Photo: Yuji Oku</p>
+        </div>
+      </div>
+    </div>
+    <div class="exhibit-card reveal reveal-d2">
+      <div style="position:relative;">
+        <img src="assets/images/vol2_gallery_wide.jpg" alt="Vol.2 桜井旭展 — 会場全景">
+      </div>
+      <div class="exhibit-card-body">
+        <div class="vol">Exhibition Vol.2</div>
+        <h3>桜井 旭（洋画家）</h3>
+        <p>
+          テーマ「呼吸するオフィス」。5mの曲面パーティションに
+          アクリル・油彩の大作を展示。空間と絵画が共鳴する体験を提供。
+          来場者600名超、メディア掲載77件。
+        </p>
+        <div class="archive-gallery">
+          <h4>Archive</h4>
+          <div class="archive-thumbs">
+            <img src="assets/images/vol2_lounge_art.jpg" alt="Vol.2 アート×ラウンジ" loading="lazy">
+            <img src="assets/images/vol2_reception.jpg" alt="Vol.2 レセプション" loading="lazy">
+            <img src="assets/images/sakurai_forest.jpg" alt="桜井旭 屋外インスタレーション" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- RESULTS -->
+<!-- ============================== -->
+<section class="section" id="results" style="background:var(--bg-light); max-width:100%; padding:80px 24px;">
   <div style="max-width:var(--max-w); margin:0 auto;">
     <div class="reveal">
-      <div class="section-label">Before / After</div>
-      <h2 style="font-size:clamp(22px, 3.5vw, 32px); font-weight:700; line-height:1.5; margin-bottom:16px;">_ing 導入前と導入後</h2>
+      <div class="section-label">Results</div>
+      <h2>数字で見る _ing の成果</h2>
       <p class="section-lead">
-        たった10ヶ月で、会社の「見え方」も「集まる人」も変わりました。
+        _ingは「アートで空間を変え、企業の魅力を高め、人が集まる場所をつくる」取り組み。<br>
+        10ヶ月の実践で、目に見える成果が生まれました。
       </p>
     </div>
-  </div>
 
-  <div class="ba-grid">
-    <div class="ba-card before reveal">
-      <p style="font-size:12px; color:var(--text3); margin-bottom:12px; font-weight:700; letter-spacing:2px;">BEFORE</p>
-      <p style="font-size:22px; font-weight:700; margin-bottom:8px;">年間来訪者 50名</p>
-      <p style="font-size:13px; color:var(--text3); line-height:1.8;">
-        採用に苦戦<br>
-        メディア露出ほぼゼロ<br>
-        「普通の建設会社」というイメージ
-      </p>
+    <div class="kpi-grid">
+      <div class="kpi-card reveal reveal-d1">
+        <div class="kpi-number"><span class="count-up" data-target="3">0</span><span class="kpi-unit">名</span></div>
+        <div class="kpi-label">20代前半の若手が自ら入社<br><small style="color:var(--text3);">18歳職人・23歳経理・22歳建築士</small></div>
+      </div>
+      <div class="kpi-card reveal reveal-d2">
+        <div class="kpi-number"><span class="count-up" data-target="10">0</span><span class="kpi-unit">倍</span></div>
+        <div class="kpi-label">年間来訪者数の増加<br><small style="color:var(--text3);">50名 → 500名超</small></div>
+      </div>
+      <div class="kpi-card reveal reveal-d3">
+        <div class="kpi-number"><span class="count-up" data-target="77">0</span><span class="kpi-unit">件</span></div>
+        <div class="kpi-label">メディア掲載<br><small style="color:var(--text3);">テレビ・新聞含む</small></div>
+      </div>
+      <div class="kpi-card reveal reveal-d4">
+        <div class="kpi-number"><span class="count-up" data-target="600">0</span><span class="kpi-unit">名超</span></div>
+        <div class="kpi-label">展覧会来場者<br><small style="color:var(--text3);">岩井美佳展・桜井旭展 計2回</small></div>
+      </div>
     </div>
-    <div class="ba-arrow reveal">→</div>
-    <div class="ba-card after reveal">
-      <p style="font-size:12px; color:var(--pink); margin-bottom:12px; font-weight:700; letter-spacing:2px;">AFTER</p>
-      <p style="font-size:22px; font-weight:700; margin-bottom:8px;">年間来訪者 500名超</p>
-      <p style="font-size:13px; color:var(--text2); line-height:1.8;">
-        20代3名が自ら入社<br>
-        メディア掲載77件<br>
-        「あの面白い建設会社」と認知
-      </p>
-    </div>
-  </div>
 
-  <div class="ba-detail-grid">
-    <div class="ba-detail-item reveal reveal-d1">
-      <div class="label">採用</div>
-      <div class="before-val">応募なし・採用ゼロが続く</div>
-      <div class="after-val">20代前半3名が「自分で選んで」入社</div>
+    <div class="reveal">
+      <h3 style="font-size:15px; color:var(--text2); margin:40px 0 16px; text-align:center;">_ing 導入前と導入後</h3>
+      <div class="ba-grid">
+        <div class="ba-card before">
+          <p style="font-size:12px; color:var(--text3); margin-bottom:8px;">BEFORE</p>
+          <p style="font-size:20px; font-weight:700; margin-bottom:4px;">年間来訪者 50名</p>
+          <p style="font-size:13px; color:var(--text3);">採用に苦戦、メディア露出ほぼゼロ</p>
+        </div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-card after">
+          <p style="font-size:12px; color:var(--pink); margin-bottom:8px;">AFTER</p>
+          <p style="font-size:20px; font-weight:700; margin-bottom:4px;">年間来訪者 500名超</p>
+          <p style="font-size:13px; color:var(--text2);">20代3名入社、メディア77件、展覧会600名来場</p>
+        </div>
+      </div>
     </div>
-    <div class="ba-detail-item reveal reveal-d2">
-      <div class="label">認知・メディア</div>
-      <div class="before-val">メディア露出ほぼゼロ</div>
-      <div class="after-val">テレビ・新聞含む77件掲載</div>
-    </div>
-    <div class="ba-detail-item reveal reveal-d3">
-      <div class="label">来訪・集客</div>
-      <div class="before-val">年間来訪者50名程度</div>
-      <div class="after-val">展覧会2回で600名超来場、年間500名超</div>
-    </div>
-    <div class="ba-detail-item reveal reveal-d4">
-      <div class="label">社員の意識</div>
-      <div class="before-val">受け身の組織体制</div>
-      <div class="after-val">社員主導のオフィスリノベ計画が始動</div>
+
+    <div class="photo-grid photo-grid-3 reveal" style="margin-top:32px;">
+      <div style="position:relative;">
+        <img src="assets/images/office_art.jpg" alt="オフィス空間のアート（岩井美佳作品）">
+        <span style="position:absolute; bottom:8px; right:10px; font-family:var(--font-en); font-size:10px; letter-spacing:0.5px; color:rgba(255,255,255,0.95); background:rgba(0,0,0,0.65); padding:3px 10px; border-radius:4px; z-index:5;">Photo: Yuji Oku</span>
+      </div>
+      <div class="photo-sub">
+        <img src="assets/images/sakurai_paintings.jpeg" alt="桜井旭展 展示風景">
+        <img src="assets/images/staff_coupler.jpg" alt="菊谷達史 エントランス壁画の前で">
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ============================== -->
-<!-- ⑤ PROCESS — 再現性のある流れ -->
+<!-- PROCESS -->
 <!-- ============================== -->
 <section class="section" id="process">
   <div class="reveal">
     <div class="section-label">Process</div>
-    <h2>この流れで進めたから、変化が生まれた</h2>
+    <h2>_ing が歩んだ10ヶ月</h2>
     <p class="section-lead">
-      特別な予算や人脈がなくても再現できる、4つのフェーズ。<br>
-      「何をしたか」だけでなく「何が変わったか」を各ステップで示します。
+      「空間にストーリーを持たせる」という一つの信念のもと、<br>
+      試行錯誤を重ねながら進んできたプロセスを公開します。
     </p>
   </div>
 
   <div class="timeline">
     <div class="tl-item reveal">
-      <div class="tl-period">Phase 1 — 戦略策定（1〜2ヶ月目）</div>
-      <div class="tl-title">「空間ブランディング」という方針を定めた</div>
+      <div class="tl-period">Phase 1 — 戦略策定</div>
+      <div class="tl-title">「アート × 空間 × 組織開発」を言語化</div>
       <div class="tl-desc">
         自社の強みである「建具工事の技術力」と「アートの創造性」の融合を定義。<br>
-        「オフィス空間を変えれば、企業の見え方が変わる」という仮説を立て、<br>
-        パーティション整備・空間リニューアル設計に着手しました。
+        パーティション整備・空間リニューアル設計に着手。
       </div>
-      <div class="tl-result">成果: ブランドコンセプト「_ing」の確立</div>
     </div>
     <div class="tl-item reveal">
-      <div class="tl-period">Phase 2 — 展覧会開催（3〜6ヶ月目）</div>
-      <div class="tl-title">オフィスをギャラリーに変え、外部に開いた</div>
+      <div class="tl-period">Phase 2 — 展覧会開催</div>
+      <div class="tl-title">岩井美佳展 &amp; 桜井旭展で600名超が来場</div>
       <div class="tl-desc">
-        Vol.1 岩井美佳（染色家）：10mの壁面に染色テキスタイルアートを展開。<br>
-        Vol.2 桜井旭（洋画家）：テーマ「呼吸するオフィス」。Xで30,000リプライ超の反響。<br>
-        「建設会社がアートをやっている」という話題性が、メディアと人を呼び込みました。
+        Vol.1 岩井美佳（染色家）：来場者150名超、メディア43件。<br>
+        Vol.2 桜井旭（洋画家）：テーマ「呼吸するオフィス」。Xキャンペーンで30,000リプライ超。
       </div>
-      <div class="tl-result">成果: 来場者600名超・メディア77件</div>
       <div class="tl-photo" style="position:relative;">
         <img src="assets/images/iwai_exhibition.jpg" alt="展覧会の様子">
         <span style="position:absolute; bottom:8px; right:10px; font-family:var(--font-en); font-size:10px; letter-spacing:0.5px; color:rgba(255,255,255,0.95); background:rgba(0,0,0,0.65); padding:3px 10px; border-radius:4px; z-index:5;">Photo: Yuji Oku</span>
       </div>
     </div>
     <div class="tl-item reveal">
-      <div class="tl-period">Phase 3 — 採用への波及（7〜8ヶ月目）</div>
-      <div class="tl-title">空間が変わったことで、人が集まり始めた</div>
+      <div class="tl-period">Phase 3 — 採用成果</div>
+      <div class="tl-title">20代の若手3名が「自分で選んで」入社</div>
       <div class="tl-desc">
-        テレビ報道をきっかけに入社した広報担当。高校の先生から紹介された18歳の職人。<br>
-        前職の建設会社から転職してきた2級建築士。<br>
-        「空間の力で、若者が自分で選んで来る」という流れが自然に生まれました。
+        18歳の職人、23歳の経理、22歳の2級建築士。<br>
+        建設業界の深刻な人手不足の中、有名企業ではない地方企業に若者が集まり始めた。
       </div>
-      <div class="tl-result">成果: 20代3名が自ら入社</div>
     </div>
     <div class="tl-item reveal">
-      <div class="tl-period">Phase 4 — 自走する組織（9〜10ヶ月目）</div>
-      <div class="tl-title">社員がブランディングの主体になった</div>
+      <div class="tl-period">Phase 4 — COUPLER &amp; 自走</div>
+      <div class="tl-title">指江昌克氏のシャッターアート「COUPLER」制作進行</div>
       <div class="tl-desc">
-        社員主導のオフィスリノベーション計画が始動。<br>
-        アーティスト同士の紹介が自走し、次の展覧会企画も社員が推進。<br>
-        「トップダウンの施策」から「組織の文化」へ変わりました。
+        社員主導のオフィスリノベーション計画も始動。<br>
+        アーティスト同士の紹介が自走し、金沢美術工芸大学出身の国際的画家・指江昌克氏による
+        「分ける」から「つなぐ」を表現するシャッターアート「COUPLER」が進行中。
       </div>
-      <div class="tl-result">成果: 社員主導のリノベ計画始動</div>
       <div class="tl-photo">
         <img src="assets/images/coupler_sashie.jpeg" alt="COUPLER完成">
       </div>
@@ -1102,69 +981,47 @@ body {
 </section>
 
 <!-- ============================== -->
-<!-- ⑥ STORY — 背景・葛藤 -->
+<!-- INDUSTRY CONTEXT -->
 <!-- ============================== -->
-<div class="story-section" id="story">
-  <div class="story-inner">
-    <div class="reveal">
-      <div class="section-label">Story</div>
-      <h2>なぜ始めたのか。途中で何があったのか。</h2>
-      <p class="section-lead">
-        最初から確信があったわけではありません。<br>
-        業界の現実に向き合い、試行錯誤した末にたどり着いた答えです。
-      </p>
-    </div>
+<section class="section" style="padding-top:0;">
+  <div class="reveal">
+    <div class="section-label">Context</div>
+    <h2>建設業界が直面している課題</h2>
+    <p class="section-lead">
+      _ingの成果がなぜ注目に値するのか。<br>
+      業界の現状を知れば、その意味が見えてきます。
+    </p>
+  </div>
 
-    <div class="story-block reveal">
-      <h3>業界の現実 — 若者が来ない構造的問題</h3>
-      <p>
-        建設業界では就業者の36%が55歳以上、29歳以下はわずか12%。<br>
-        大手ゼネコンですら高卒の職人確保に苦戦する時代。<br>
-        従業員33名の地方企業が「待っていても人は来ない」のは明白でした。
-      </p>
+  <div class="kpi-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="kpi-card">
+      <div class="kpi-number"><span class="count-up" data-target="36">0</span><span class="kpi-unit">%</span></div>
+      <div class="kpi-label">就業者のうち55歳以上の割合<br><small style="color:var(--text3);">出典: 国土交通省 / 総務省「労働力調査」</small></div>
     </div>
-
-    <div class="story-block reveal">
-      <h3>きっかけ — 「空間を変えたら、見え方が変わるのでは？」</h3>
-      <p>
-        建具工事会社だからこそ、空間に対する知見がある。<br>
-        その強みを活かして「自社の空間を変えること」から始めよう。<br>
-        アートの力で「普通の建設会社」を「行ってみたい会社」に変える — <br>
-        そんな仮説を立てるところから、_ingは始まりました。
-      </p>
+    <div class="kpi-card">
+      <div class="kpi-number"><span class="count-up" data-target="12">0</span><span class="kpi-unit">%</span></div>
+      <div class="kpi-label">29歳以下の就業者割合<br><small style="color:var(--text3);">出典: 国土交通省 / 総務省「労働力調査」</small></div>
     </div>
-
-    <div class="story-block reveal">
-      <h3>葛藤 — 「アートで本当に変わるのか？」</h3>
-      <p>
-        社内からは当然、疑問の声もありました。<br>
-        「建設会社がアートに投資する意味があるのか？」<br>
-        「もっと直接的な採用施策をすべきでは？」<br>
-        成果が出るまでの間、この問いに答え続ける日々でした。
-      </p>
-    </div>
-
-    <div class="story-block reveal">
-      <h3>転機 — メディアが動き、人が動いた</h3>
-      <p>
-        展覧会がテレビで取り上げられたことで、一気に認知が広がりました。<br>
-        「建設会社がアートをやっている」という意外性がニュースになった。<br>
-        そこから採用応募が来るようになり、仮説が確信に変わりました。
-      </p>
-    </div>
-
-    <div class="story-highlight reveal">
-      <p>
-        有名企業でなくても、空間とブランドの力で<br>
-        若者が「自ら選んで来る」企業になれる。<br>
-        私たちの10ヶ月が、その証明です。
-      </p>
+    <div class="kpi-card">
+      <div class="kpi-number"><span class="count-up" data-target="33">0</span><span class="kpi-unit">名</span></div>
+      <div class="kpi-label">私たちの会社の従業員数<br><small>この規模で若手3名採用は異例</small></div>
     </div>
   </div>
-</div>
+
+  <div class="context-box reveal">
+    <p style="font-size:15px; line-height:2; color:rgba(255,255,255,0.85);">
+      建設業界では高卒の職人確保が最大の課題であり、大手ゼネコンですら困難を極めています。
+      この環境下で、従業員33名の地方企業が「空間デザイン × アート」のアプローチで
+      20代前半の若手を採用できたことは、業界に対する一つの回答です。
+    </p>
+    <p style="font-size:16px; color:var(--yellow); margin-top:16px; font-weight:700;">
+      有名企業でなくても、空間とブランドの力で若者が自ら選んで来る。
+    </p>
+  </div>
+</section>
 
 <!-- ============================== -->
-<!-- ⑦ VOICES — 選ばれる理由の証拠 -->
+<!-- VOICES -->
 <!-- ============================== -->
 <section id="voices" style="background:var(--bg-light); padding:80px 24px;">
   <div style="max-width:var(--max-w); margin:0 auto;">
@@ -1172,8 +1029,8 @@ body {
       <div class="section-label">Voices — Roundtable</div>
       <h2>「なぜ、この会社を選んだのか」</h2>
       <p class="section-lead">
-        空間ブランディングは、実際に採用にどう影響したのか？<br>
-        「自分で選んで来た」4人の若手社員に、本音を聞きました。
+        それぞれの理由で小松ウォールアイティを選んだ4人の若手社員。<br>
+        一つのテーブルを囲んで語ってもらいました。
       </p>
     </div>
 
@@ -1328,16 +1185,16 @@ body {
 </section>
 
 <!-- ============================== -->
-<!-- ⑧ SERVICE — 提供できるもの -->
+<!-- SERVICE -->
 <!-- ============================== -->
 <div class="service-section" id="service">
   <div style="max-width:var(--max-w); margin:0 auto; position:relative; z-index:1;">
     <div class="reveal">
       <div class="section-label">Service</div>
-      <h2>この取り組みを、御社でも</h2>
+      <h2>私たちがご提供できること</h2>
       <p class="section-lead">
         自社で実践し、成果を出したからこそ提供できる。<br>
-        「空間 × アート」で企業の魅力を変えるサービスです。
+        空間 × アートで企業の魅力を変えるサービスです。
       </p>
     </div>
   </div>
@@ -1347,13 +1204,8 @@ body {
       <h3>アートオフィス<br>プロデュース</h3>
       <p>空間設計からアート選定・施工まで一体で提供。パーティション施工力とアートプロデュースを兼ね備えた、北陸唯一のサービスです。</p>
     </div>
-    <div class="service-card reveal reveal-d2">
+    <div class="service-card reveal reveal-d2" style="border-color:var(--border); background:var(--bg-light);">
       <div class="service-icon" style="background:rgba(255,51,153,0.1); color:var(--pink);">&#9670;</div>
-      <h3>空間ブランディング<br>コンサルティング</h3>
-      <p>「採用に効く空間づくり」を、戦略策定からアート選定・メディア展開まで伴走。自社の実績データに基づいたアドバイスを提供します。</p>
-    </div>
-    <div class="service-card reveal reveal-d3" style="border-color:var(--border); background:var(--bg-light);">
-      <div class="service-icon" style="background:rgba(0,197,83,0.1); color:var(--green);">&#9679;</div>
       <h3>その他のご相談</h3>
       <p>空間診断やアートのレンタルなど、新しいサービスも準備中です。<br>「こんなことできる？」など、お気軽にお問い合わせください。</p>
     </div>
@@ -1361,146 +1213,19 @@ body {
 </div>
 
 <!-- ============================== -->
-<!-- ART — COUPLER & EXHIBITIONS（⑧と⑨の間） -->
-<!-- ============================== -->
-<div id="art">
-  <!-- COUPLER -->
-  <div style="background:#0a0a1e; text-align:center;">
-    <img src="assets/images/coupler_sashie.jpeg" alt="COUPLER — 指江昌克によるシャッターアート" style="width:100%; max-height:70vh; object-fit:contain; display:block; margin:0 auto;">
-  </div>
-  <div style="background:#0a0a1e; padding:40px 32px 48px;">
-    <div style="max-width:var(--max-w); margin:0 auto;">
-      <div class="section-label" style="color:var(--yellow);">Shutter Art — Exhibition Vol.3</div>
-      <h2 style="font-size:clamp(28px,5vw,48px); font-weight:700; line-height:1.3; color:#fff; margin-bottom:12px;">COUPLER</h2>
-      <p style="font-size:16px; color:#fff; line-height:2; max-width:640px; font-weight:600;">
-        金沢美術工芸大学出身、国際的に活躍する美術家・指江昌克氏によるシャッターアート。<br>
-        建具工事会社のシャッターを「分ける」ものから「つなぐ」ものへ — <br>
-        閉じたシャッターが、24時間365日、街と企業をつなぐメディアになる。<br>
-        _ingの象徴的プロジェクトです。
-      </p>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="coupler-detail reveal">
-      <img src="assets/images/coupler_making.jpg" alt="COUPLER 制作中">
-      <div class="coupler-detail-text">
-        <h3>「分ける」から「つなぐ」へ</h3>
-        <p>
-          金沢を拠点に国際的に活躍する美術家・指江昌克氏が、
-          小松ウォールアイティのシャッターに描いた作品「COUPLER」。<br><br>
-          巨大な球体構造物を描くSF的・ディストピア的世界観が特徴の指江氏が、
-          都市に溢れるモチーフを再構成し、閉じたシャッターの上で
-          街と企業の物語を紡ぎます。<br><br>
-          <strong style="color:var(--navy);">Exhibition Vol.3として、2026年10月〜11月の開幕を予定。</strong>
-        </p>
-      </div>
-    </div>
-
-    <!-- Artist profile -->
-    <div class="artist-card reveal">
-      <img src="assets/images/sashie_portrait.jpg" alt="指江昌克" style="width:100px;height:100px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--pink);">
-      <div>
-        <p style="font-size:16px; font-weight:700; margin-bottom:4px;">
-          指江 昌克
-          <span style="font-family:var(--font-en); font-size:12px; color:var(--text3); font-weight:400; margin-left:8px;">Masakatsu Sashie</span>
-        </p>
-        <p style="font-size:13px; color:var(--text2); line-height:1.8;">
-          金沢美術工芸大学出身、金沢を拠点に国際的に活躍する画家。
-          巨大な球体構造物を描くSF的・ディストピア的世界観が代名詞。
-          ネオンサイン、錆びたトタン、室外機、自動販売機など都市に溢れるモチーフを再構成し、
-          日本国内のみならず世界各地のギャラリーで作品を発表。
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXHIBITIONS -->
-  <section class="section" style="padding-top:0;">
-    <div class="reveal">
-      <div class="section-label">Exhibitions</div>
-      <h2>_ing が開催した展覧会</h2>
-      <p class="section-lead">
-        オフィス空間をギャラリーに変え、アーティストの作品を展示。<br>
-        2回の展覧会で延べ600名超が来場、メディア掲載77件を記録しました。
-      </p>
-    </div>
-
-    <div class="exhibit-grid">
-      <div class="exhibit-card reveal reveal-d1">
-        <div style="position:relative; overflow:hidden;">
-          <img src="assets/images/vol1_gallery_wide.jpg" alt="Vol.1 岩井美佳展 — 会場全景">
-          <span style="position:absolute; bottom:8px; right:10px; font-family:var(--font-en); font-size:10px; letter-spacing:0.5px; color:rgba(255,255,255,0.95); background:rgba(0,0,0,0.65); padding:3px 10px; border-radius:4px; z-index:5;">Photo: Yuji Oku</span>
-        </div>
-        <div class="exhibit-card-body">
-          <div class="vol">Exhibition Vol.1</div>
-          <h3>岩井 美佳（染色家）</h3>
-          <p>
-            10mの壁面に染色テキスタイルアートを展開。
-            来場者150名超、メディア掲載43件。
-            _ingの存在を社会に示した記念碑的展示。
-          </p>
-          <div class="archive-gallery">
-            <h4>Archive</h4>
-            <div class="archive-thumbs">
-              <img src="assets/images/vol1_artwork_detail.jpg" alt="Vol.1 作品ディテール — Photo: Yuji Oku" loading="lazy">
-              <img src="assets/images/vol1_textile_detail.jpg" alt="Vol.1 テキスタイル素材 — Photo: Yuji Oku" loading="lazy">
-              <img src="assets/images/office_entrance.jpg" alt="_ingオフィス エントランス" loading="lazy">
-            </div>
-            <p style="font-size:10px; color:var(--text3); text-align:right; margin-top:4px; font-family:var(--font-en);">Photo: Yuji Oku</p>
-          </div>
-        </div>
-      </div>
-      <div class="exhibit-card reveal reveal-d2">
-        <div style="position:relative;">
-          <img src="assets/images/vol2_gallery_wide.jpg" alt="Vol.2 桜井旭展 — 会場全景">
-        </div>
-        <div class="exhibit-card-body">
-          <div class="vol">Exhibition Vol.2</div>
-          <h3>桜井 旭（洋画家）</h3>
-          <p>
-            テーマ「呼吸するオフィス」。5mの曲面パーティションに
-            アクリル・油彩の大作を展示。空間と絵画が共鳴する体験を提供。
-            来場者600名超、メディア掲載77件。
-          </p>
-          <div class="archive-gallery">
-            <h4>Archive</h4>
-            <div class="archive-thumbs">
-              <img src="assets/images/vol2_lounge_art.jpg" alt="Vol.2 アート×ラウンジ" loading="lazy">
-              <img src="assets/images/vol2_reception.jpg" alt="Vol.2 レセプション" loading="lazy">
-              <img src="assets/images/sakurai_forest.jpg" alt="桜井旭 屋外インスタレーション" loading="lazy">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ============================== -->
-<!-- ⑨ CTA — 相談・診断への導線強化 -->
+<!-- CTA -->
 <!-- ============================== -->
 <section class="section" id="contact">
   <div class="cta-section reveal">
-    <div class="section-label" style="text-align:center;">Contact</div>
-    <h2>まずは、お気軽にご相談ください</h2>
+    <h2>まずは空間を見に来てください</h2>
     <p>
-      「うちの会社でもできるの？」「まず何から始めれば？」<br>
-      そんな段階からで構いません。見学・相談・空間診断、何でもお気軽に。
+      _ingの成果は、言葉だけでは伝わりません。<br>
+      アートのあるオフィス空間を、ぜひ実際にご覧ください。
     </p>
-    <div class="cta-buttons">
-      <a href="https://www.wall-it.com/contact/" class="cta-btn" target="_blank" rel="noopener">
-        相談・お問い合わせ
-      </a>
-      <a href="https://www.wall-it.com/contact/" class="cta-btn-secondary" target="_blank" rel="noopener">
-        オフィス見学を申し込む
-      </a>
-    </div>
-    <p style="font-size:13px; color:var(--text2); margin-top:12px; line-height:1.9;">
-      見学だけでもOK。アートのあるオフィス空間を実際にご覧いただけます。<br>
-      「空間診断」や「採用ブランディング相談」もお受けしています。
-    </p>
-    <p style="font-size:12px; color:var(--text3); margin-top:20px;">
+    <a href="https://www.wall-it.com/contact/" class="cta-btn" target="_blank" rel="noopener">
+      お気軽に会社に来てみてください
+    </a>
+    <p style="font-size:12px; color:var(--text3); margin-top:16px;">
       小松ウォールアイティ株式会社｜〒921-8062 石川県金沢市新保本2丁目607番地<br>
       TEL: 076-249-0412
     </p>
@@ -1581,6 +1306,7 @@ function countUp(el){
   ];
   var isMobile = window.matchMedia('(max-width: 768px)').matches;
   var count = isMobile ? 16 : 24;
+  // Buildup: start sparse (drizzle) and ramp to full bloom over ~6s
   var buildup = 6;
   for(var i=0; i<count; i++){
     var src = marks[i % marks.length];
@@ -1589,6 +1315,7 @@ function countUp(el){
     var size = 14 + Math.random() * 62;
     var left = 1 + Math.random() * 98;
     var dur = 7 + Math.random() * 12;
+    // Positive staggered delay — biased toward later so it starts as light rain and fills in
     var r = Math.random();
     var delay = Math.pow(r, 0.6) * buildup;
     var sway1 = -60 + Math.random() * 120;
@@ -1599,7 +1326,8 @@ function countUp(el){
   }
 })();
 
-// Static background marks
+// Static background marks — "fallen petals" layout
+// Only on text-based sections (no photos), balanced, never clipped
 (function(){
   var marks = [
     'assets/images/petals/mark_pink_navy.png',
@@ -1607,14 +1335,20 @@ function countUp(el){
     'assets/images/petals/mark_yellow_green.png',
     'assets/images/petals/mark_green_pink.png'
   ];
+  // Sections WITH photos — skip these
+  var photoSections = ['results','process','coupler'];
+  // Sections for static marks (text-only)
   var sections = document.querySelectorAll('#voices, #service, #contact');
 
+  // Place marks like they've just fallen and landed — scattered but balanced
+  // Use a grid-like approach to avoid overlap and ensure no clipping
   sections.forEach(function(sec, si){
     sec.style.position = 'relative';
     sec.style.overflow = 'visible';
     var secH = sec.offsetHeight || 600;
     var secW = sec.offsetWidth || 1200;
     var count = 5 + (si % 2);
+    // Divide section into rows for balanced distribution
     var rows = Math.ceil(count / 2);
     var rowH = 100 / (rows + 1);
     var placed = 0;
@@ -1625,14 +1359,17 @@ function countUp(el){
         el.className = 'bg-mark';
         var src = marks[(si * 3 + placed) % marks.length];
         var size = 50 + Math.random() * 100;
+        // Vertical: spread across rows with jitter
         var top = rowH * (r + 0.5) + (Math.random() - 0.5) * rowH * 0.6;
         top = Math.max(3, Math.min(top, 92));
+        // Horizontal: left side or right side, with margin to avoid clipping
         var marginPx = size + 10;
         var marginPct = (marginPx / secW) * 100;
         var left;
         if(c === 0) left = marginPct * 0.3 + Math.random() * 15;
         else left = 70 + Math.random() * (25 - marginPct * 0.3);
         if(cols === 1) left = 30 + Math.random() * 40;
+        // Gentle rotation like a fallen petal
         var rot = -25 + Math.random() * 50;
         el.style.cssText = 'width:'+size+'px;height:'+size+'px;top:'+top+'%;left:'+left+'%;transform:rotate('+rot+'deg);';
         el.innerHTML = '<img src="'+src+'" alt="">';
@@ -1642,18 +1379,23 @@ function countUp(el){
     }
   });
 
-  // Story section marks
-  var storySec = document.querySelector('.story-section');
-  if(storySec){
-    for(var j=0; j<2; j++){
-      var el2 = document.createElement('div');
-      el2.className = 'bg-mark';
-      el2.style.opacity = '0.06';
-      var src2 = marks[j + 1];
-      var sz = 60 + Math.random() * 80;
-      el2.style.cssText += 'width:'+sz+'px;height:'+sz+'px;top:'+(20+j*50)+'%;left:'+(j===0?5:80)+'%;transform:rotate('+(Math.random()*40-20)+'deg);opacity:0.06;';
-      el2.innerHTML = '<img src="'+src2+'" alt="">';
-      storySec.appendChild(el2);
+  // For the industry context section (between process and voices)
+  var ctx = document.querySelector('.context-box');
+  if(ctx && ctx.parentElement){
+    var ctxSec = ctx.closest('section');
+    if(ctxSec){
+      ctxSec.style.position = 'relative';
+      ctxSec.style.overflow = 'visible';
+      // Add 2 subtle marks to context section
+      for(var j=0; j<2; j++){
+        var el2 = document.createElement('div');
+        el2.className = 'bg-mark';
+        var src2 = marks[j + 1];
+        var sz = 60 + Math.random() * 80;
+        el2.style.cssText = 'width:'+sz+'px;height:'+sz+'px;top:'+(20+j*50)+'%;left:'+(j===0?5:80)+'%;transform:rotate('+(Math.random()*40-20)+'deg);';
+        el2.innerHTML = '<img src="'+src2+'" alt="">';
+        ctxSec.appendChild(el2);
+      }
     }
   }
 })();
